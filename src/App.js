@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import TicketPage from './pages/TicketPage';
 import ChatBox from './components/ChatBox';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <main className="flex-grow-1">
         <TicketPage />
       </main>
-      <Footer />
+      <LanguageProvider>
+        <Footer />
+      </LanguageProvider>
       <ChatBox />
     </div>
   );

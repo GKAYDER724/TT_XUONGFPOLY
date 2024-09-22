@@ -124,3 +124,66 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* chuyen doi ngon ngu */
+
+.btn-language-toggle {
+  font-size: 16px;
+  color: #007bff; /* Màu xanh dương nổi bật */
+  background-color: transparent; /* Nút không có nền */
+  border: 2px solid #007bff; /* Đường viền xanh dương */
+  border-radius: 5px; /* Bo góc nút */
+  padding: 5px 15px; /* Tạo khoảng cách bên trong nút */
+  cursor: pointer; /* Con trỏ dạng nút bấm */
+  transition: all 0.3s ease; /* Hiệu ứng mượt khi hover */
+}
+
+.btn-language-toggle:hover {
+  background-color: #007bff; /* Nền màu xanh khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+}
+
+.btn-language-toggle:focus {
+  outline: none; /* Bỏ viền mặc định khi focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng đổ bóng khi focus */
+}
+
+.text-right {
+  display: flex;
+  justify-content: flex-end; /* Canh phải nội dung */
+  align-items: center; /* Căn giữa theo trục dọc */
+}
+
+.dropup .dropdown-toggle {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.dropup .dropdown-menu {
+  min-width: 100px;
+}
+
+.dropup .dropdown-item {
+  cursor: pointer;
+}
+
+.dropup .dropdown-item:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-language-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-outline-success {
+  margin-left: 5px;
+}
