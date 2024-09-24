@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Header = () => {
     
   return (
@@ -7,7 +8,9 @@ const Header = () => {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center">
           <div className="logo">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT30SN4IsdK3J5FvD_6EFV8gvgZJvBB5XrpQA&s" alt="Logo" width="200" />
+            <a className="nav-link" href="/">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT30SN4IsdK3J5FvD_6EFV8gvgZJvBB5XrpQA&s" alt="Logo" width="200" />
+            </a>
           </div>
           <nav>
             <ul className="nav">

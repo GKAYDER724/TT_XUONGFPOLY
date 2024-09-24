@@ -124,3 +124,385 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* chuyen doi ngon ngu */
+
+.btn-language-toggle {
+  font-size: 16px;
+  color: #007bff; /* Màu xanh dương nổi bật */
+  background-color: transparent; /* Nút không có nền */
+  border: 2px solid #007bff; /* Đường viền xanh dương */
+  border-radius: 5px; /* Bo góc nút */
+  padding: 5px 15px; /* Tạo khoảng cách bên trong nút */
+  cursor: pointer; /* Con trỏ dạng nút bấm */
+  transition: all 0.3s ease; /* Hiệu ứng mượt khi hover */
+}
+
+.btn-language-toggle:hover {
+  background-color: #007bff; /* Nền màu xanh khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+}
+
+.btn-language-toggle:focus {
+  outline: none; /* Bỏ viền mặc định khi focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng đổ bóng khi focus */
+}
+
+.text-right {
+  display: flex;
+  justify-content: flex-end; /* Canh phải nội dung */
+  align-items: center; /* Căn giữa theo trục dọc */
+}
+
+.dropup .dropdown-toggle {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.dropup .dropdown-menu {
+  min-width: 100px;
+}
+
+.dropup .dropdown-item {
+  cursor: pointer;
+}
+
+.dropup .dropdown-item:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-language-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-outline-success {
+  margin-left: 5px;
+}
+
+/* Home.css */
+
+.header {
+  background-color: #0080ff;
+  padding: 20px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.breadcrumb {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #00050a;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: #3e3f40;
+}
+
+/* Sidebar Styling */
+.main-sidebar {
+  width: 25%;
+  padding: 20px;
+}
+
+/* Panel Styling */
+.panel {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.panel-heading {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+}
+
+.panel-title i {
+  margin-right: 8px;
+}
+
+.panel-minimise {
+  cursor: pointer;
+}
+
+.panel-body {
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.panel-footer {
+  padding: 10px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.panel-footer a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.panel-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Account Info Panel Specific Styling */
+.panel-client-details .panel-body {
+  font-size: 14px;
+  color: #333;
+}
+
+.panel-client-details .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.panel-client-details .btn-outline {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+/* Contacts Panel Specific Styling */
+.panel-client-contacts .list-group-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.panel-client-contacts .list-group-item:hover {
+  background-color: #f5f5f5;
+}
+
+.panel-client-contacts .contact-more {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.panel-client-contacts .contact-more:hover {
+  text-decoration: underline;
+}
+
+/* Shortcuts Panel Specific Styling */
+.panel-sidebar .list-group-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  text-decoration: none;
+}
+
+.panel-sidebar .list-group-item:hover {
+  background-color: #f5f5f5;
+}
+
+.panel-sidebar .list-group-item i {
+  margin-right: 8px;
+}
+
+/* Main Content Styling */
+.main-content {
+  width: 75%; /* Adjust width as needed */
+  float: right; /* Positions the content on the right side */
+  padding: 20px; /* Adds padding inside the main content area */
+  box-sizing: border-box; /* Includes padding in width calculation */
+  position: relative; /* Ensures it can be positioned within the normal document flow */
+  z-index: 1000; /* Higher value to ensure it's above other elements */
+}
+
+/* Tiles Container */
+.tiles {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Swiper Container */
+.swiper-container {
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+/* Swiper Slide */
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.col-md-3 {
+  flex: 1 0 25%;
+}
+
+/* Tile Styling */
+.tile {
+  display: block;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.tile:hover {
+  background: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tile-icon-absolute {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.tile-stat {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.tile-title {
+  font-size: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .col-md-3 {
+    flex: 1 0 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-md-3 {
+    flex: 1 0 100%;
+  }
+}
+
+/* Styles for the client home panels container */
+.client-home-panels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between panels */
+}
+
+/* Styles for individual panels */
+.panel {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.panel-heading {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.panel-title i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.panel-body.no-data {
+  text-align: center;
+}
+
+.panel-body .no-data-icon {
+  margin-bottom: 15px;
+}
+
+.panel-body a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.panel-body a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for input groups */
+.input-group {
+  display: flex;
+}
+
+.input-group input.form-control {
+  flex: 1;
+  border-radius: 0;
+  border: 1px solid #ddd;
+}
+
+.input-group-btn {
+  display: flex;
+}
+
+.input-group-btn input.btn {
+  border-radius: 0;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-default {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-default:hover {
+  background-color: #e2e6ea;
+}
