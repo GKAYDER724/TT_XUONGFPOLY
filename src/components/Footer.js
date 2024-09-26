@@ -1,92 +1,101 @@
-import React, { useContext, useState } from 'react';
-import { LanguageContext } from '../context/LanguageContext';
+import React from 'react';
+import '../css/Footer.css';
 
 const Footer = () => {
-  const { language, toggleLanguage } = useContext(LanguageContext);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const content = {
-    en: {
-      copyright: '© 2024 My Website',
-    },
-    vi: {
-      copyright: '© 2024 Trang web của tôi',
-    },
-  };
-
-  const handleLanguageChange = (lang) => {
-    if (language !== lang) {
-      toggleLanguage();
-    }
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log('Search term:', searchTerm);
-    // Add your search logic here
-  };
 
   return (
-    <footer className="bg-light text-dark py-1 mt-auto">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <p>{content[language].copyright}</p>
-          </div>
-          <div className="col-md-6 text-right">
-            <div className="dropup">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="languageDropup"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {language === 'en' ? 'English' : 'Tiếng Việt'}
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="languageDropup">
-                {/* Search bar inside dropdown */}
-                <li>
-                  <form onSubmit={handleSearchSubmit} className="px-3 py-2">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder={language === 'en' ? 'Search...' : 'Tìm kiếm...'}
-                      value={searchTerm}
-                      onChange={handleSearchChange}
-                    />
-                    <button type="submit" className="btn btn-primary mt-2">
-                      {language === 'en' ? 'Search' : 'Tìm kiếm'}
-                    </button>
-                  </form>
-                </li>
-                <li><hr className="dropdown-divider" /></li>
-                {/* Language selection */}
-                <li>
-                  <button
-                    className="dropdown-item"
-                    onClick={() => handleLanguageChange('en')}
-                  >
-                    English
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="dropdown-item"
-                    onClick={() => handleLanguageChange('vi')}
-                  >
-                    Tiếng Việt
-                  </button>
-                </li>
-              </ul>
+    <footer className="bg-black text-light py-1 mt-auto">
+       <div className="footer-inner">
+                <div className="container">
+                    <div className="footer-sv-list">
+                        <div className="grid-5 inet-grid">
+                            {/* iNET Section */}
+                            <div className="item col-grid">
+                                <h4>iNET</h4>
+                                <ul className="list-link no-padding">
+                                    <li><a href="#">Về chúng tôi</a></li>
+                                    <li><a href="#">Liên hệ</a></li>
+                                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                                    <li><a href="#">Cam kết chất lượng dịch vụ</a></li>
+                                    <li><a href="#">Chính sách tích điểm</a></li>
+                                    <li><a href="#">Quy định hoàn tiền</a></li>
+                                    <li><a href="#">Văn bản pháp lý</a></li>
+                                    <li><a href="#">Tuyển dụng</a></li>
+                                    <li><a href="#">Bản tin</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Hỗ trợ Section */}
+                            <div className="item col-grid">
+                                <h4>Hỗ trợ</h4>
+                                <ul className="list-link no-padding">
+                                    <li><a href="#">Trung tâm hỗ trợ</a></li>
+                                    <li><a href="#">Thỏa thuận sử dụng</a></li>
+                                    <li><a href="#">Thỏa thuận bảo mật</a></li>
+                                    <li><a href="#">Quy định sử dụng tên miền</a></li>
+                                    <li><a href="#">Xử lý tranh chấp tên miền</a></li>
+                                    <li><a href="#">Báo cáo và xử lý lạm dụng</a></li>
+                                    <li><a href="#">Góp ý tên miền .VN</a></li>
+                                    <li><a href="#">Mẫu hợp đồng</a></li>
+                                    <li><a href="#">Chính sách thu thập, xử lý và bảo vệ dữ liệu cá nhân</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Công cụ Section */}
+                            <div className="item col-grid">
+                                <h4>Công cụ</h4>
+                                <ul className="list-link no-padding">
+                                    <li><a href="#">Whois tên miền</a></li>
+                                    <li><a href="#">Whois nhiều tên miền</a></li>
+                                    <li><a href="#">Lookup bản ghi tên miền</a></li>
+                                    <li><a href="#">Lookup thông tin IP</a></li>
+                                    <li><a href="#">Lookup thông tin Hosting</a></li>
+                                    <li><a href="#">OneMail</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Tiện ích Section */}
+                            <div className="item col-grid">
+                                <h4>Tiện ích</h4>
+                                <ul className="list-link no-padding">
+                                    <li><a href="#">Ẩn thông tin tên miền</a></li>
+                                    <li><a href="#">Khóa tên miền</a></li>
+                                    <li><a href="#">Quản lý subdomain</a></li>
+                                    <li><a href="#">Tạo website thông báo</a></li>
+                                    <li><a href="#">Email Forwarding</a></li>
+                                    <li><a href="#">DNSSEC</a></li>
+                                    <li><a href="#">DNS miễn phí</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Dịch vụ Section */}
+                            <div className="item col-grid">
+                                <h4>Dịch vụ</h4>
+                                <ul className="list-link no-padding">
+                                    <li><a href="#">Tên miền</a></li>
+                                    <li><a href="#">Hosting</a></li>
+                                    <li><a href="#">Email</a></li>
+                                    <li><a href="#">Cloud VPS</a></li>
+                                    <li><a href="#">Cloud Server</a></li>
+                                    <li><a href="#">Website</a></li>
+                                    <li><a href="#">SSL</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="ft-info">
+                    <div className="container">
+                        <p className="copy-right">
+                          <h6>
+                            Copyright © 2018 
+                            <a href="#" target="_blank">iNET</a> - Nhà đăng ký Tên miền Việt Nam và Quốc tế
+                          </h6>
+                            
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
     </footer>
   );
 };

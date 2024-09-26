@@ -1,0 +1,221 @@
+<footer id="footer" >
+    <div class="footer-inner ng-scope">
+        <div class="container">
+            <div class="footer-sv-list">
+                <div class="grid-5 inet-grid">
+                    <div class="item col-grid ng-scope">
+                        <h4 class="ng-binding">iNET</h4>
+                        <ul class="list-link no-padding">
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Về chúng tôi</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Liên hệ</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Hướng dẫn thanh toán</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Cam kết chất lượng dịch vụ</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span>Chính sách tích điểm</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Quy định hoàn tiền</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Văn bản pháp lý</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a >
+                                    <span class="ng-binding">Tuyển dụng</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Bản tin</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="item col-grid ng-scope">
+                        <h4 class="ng-binding">Hỗ trợ</h4>
+                        <ul class="list-link no-padding">
+                            <li class="ng-scope">
+                                <a >
+                                    <span class="ng-binding">Trung tâm hỗ trợ</span>
+                                </a>
+                            </li>
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Thỏa thuận sử dụng</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Thỏa thuận bảo mật</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Quy định sử dụng tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Xử lý tranh chấp tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Báo cáo và xử lý lạm dụng</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span ng-bind="ftlink.title" class="ng-binding">Góp ý tên miền .VN</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a >
+                                    <span class="ng-binding">Mẫu hợp đồng</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a >
+                                    <span class="ng-binding">Chính sách thu thập, xử lý và bảo vệ dữ liệu cá nhân</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div><div class="item col-grid ng-scope" >
+                        <h4 class="ng-binding">Công cụ</h4>
+                        <ul class="list-link no-padding">
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Whois tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Whois nhiều tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Lookup bản ghi tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Lookup thông tin IP</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Lookup thông tin Hosting</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">OneMail</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div><div class="item col-grid ng-scope">
+                        <h4 class="ng-binding">Tiện ích</h4>
+                        <ul class="list-link no-padding">
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Ẩn thông tin tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Khóa tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Quản lý subdomain</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Tạo website thông báo</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Email Forwarding</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">DNSSEC</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a >
+                                    <span class="ng-binding">DNS miễn phí</span>
+                                </a>
+                            </li>>
+                        </ul>
+                    </div><div class="item col-grid ng-scope">
+                        <h4 class="ng-binding">Dịch vụ</h4>
+                        <ul class="list-link no-padding">
+                            <li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Tên miền</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Hosting</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Email</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Cloud VPS</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Cloud Server</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">Website</span>
+                                </a>
+                            </li><li class="ng-scope">
+                                <a>
+                                    <span class="ng-binding">SSL</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ft-info">
+            <div class="container">
+                <p class="copy-right">
+                    Copyright © 2018 
+                    <a href="#" target="_blank">iNET</a> - Nhà đăng ký Tên miền Việt Nam và Quốc tế
+                </p>
+            </div>
+	    </div>
+    </div>
+    <div class="ng-scope">
+        <div id="widget-root">
+            <div id="chat-widget">  
+                <div id="toggle-btn">
+                    <div id="unread"></div>
+                </div>  
+                <div id="" style="display:none">     
+                    <iframe id="zchat-frame" data-src="#"></iframe>  
+                </div>
+                <div id="chat-wg-alert" style="display: none;">
+                    Xin chào, Chúng tôi giúp được gì cho bạn ?
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -37,169 +37,29 @@
   }
 }
 
-/* chatbox */
-
-.chat-box {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  height: 400px;
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
-}
-
-.chat-box.closed {
-  transform: translateY(100%);
-}
-
-.chat-box.open {
-  transform: translateY(0);
-}
-
-.chat-toggle-btn {
-  position: absolute;
-  top: -50px;
-  right: 0;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px 5px 0 0;
-}
-
-.chat-content {
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 50px); /* Adjust height for the toggle button */
-  overflow: hidden;
-}
-
-.messages {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-}
-
-.message {
-  margin-bottom: 10px;
-  padding: 8px;
-  border-radius: 5px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.message.user {
-  background-color: #e0f7fa;
-  text-align: right;
-}
-
-.message.admin {
-  background-color: #c8e6c9;
-  text-align: left;
-}
-
-.chat-input {
-  display: flex;
-  padding: 10px;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.chat-input button {
-  margin-left: 10px;
-  padding: 8px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* chuyen doi ngon ngu */
-
-.btn-language-toggle {
-  font-size: 16px;
-  color: #007bff; /* Màu xanh dương nổi bật */
-  background-color: transparent; /* Nút không có nền */
-  border: 2px solid #007bff; /* Đường viền xanh dương */
-  border-radius: 5px; /* Bo góc nút */
-  padding: 5px 15px; /* Tạo khoảng cách bên trong nút */
-  cursor: pointer; /* Con trỏ dạng nút bấm */
-  transition: all 0.3s ease; /* Hiệu ứng mượt khi hover */
-}
-
-.btn-language-toggle:hover {
-  background-color: #007bff; /* Nền màu xanh khi hover */
-  color: #fff; /* Chữ trắng khi hover */
-}
-
-.btn-language-toggle:focus {
-  outline: none; /* Bỏ viền mặc định khi focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng đổ bóng khi focus */
-}
-
-.text-right {
-  display: flex;
-  justify-content: flex-end; /* Canh phải nội dung */
-  align-items: center; /* Căn giữa theo trục dọc */
-}
-
-.dropup .dropdown-toggle {
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 5px;
-  padding: 5px 15px;
-  border: none;
-}
-
-.dropup .dropdown-menu {
-  min-width: 100px;
-}
-
-.dropup .dropdown-item {
-  cursor: pointer;
-}
-
-.dropup .dropdown-item:hover {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-language-toggle {
-  display: flex;
-  align-items: center;
-}
-
-.form-control {
-  border-radius: 5px;
-}
-
-.btn-outline-success {
-  margin-left: 5px;
-}
-
-/* Home.css */
-
 .header {
-  background-color: #0080ff;
-  padding: 20px;
+  /* height: 190px; */
+  background-image: url('https://www.oscommerce.com/images/information/oscommercehostingbanner-1.jpg');
+  background-size: cover; 
+  background-position: center; 
+  padding: 80px;
   border-bottom: 1px solid #ffffff;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 15px;
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.search-input {
+  padding: 10px;
+  width: 700px; /* Chiều rộng của ô tìm kiếm */
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 h1 {
@@ -222,13 +82,12 @@ h1 {
   color: #3e3f40;
 }
 
-/* Sidebar Styling */
+
 .main-sidebar {
   width: 25%;
   padding: 20px;
 }
 
-/* Panel Styling */
 .panel {
   background-color: #fff;
   border: 1px solid #ddd;

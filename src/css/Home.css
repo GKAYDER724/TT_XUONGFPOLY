@@ -1,0 +1,94 @@
+/* Home.css */
+
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Center the body-container */
+  .body-container {
+    width: 1100px;
+    margin: 0 auto; 
+    padding: 20px;
+  }
+  
+  /* Content styling */
+  .content {
+    text-align: left;
+  }
+  
+  /* Heading styles */
+  .heading-group h1 {
+    color: #333;
+  }
+  
+  .heading-group p {
+    color: #727272;
+    font-size: 1.2rem;
+  }
+  
+  /* Service list container */
+  .sv-list-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .sv-list-content .item {
+    flex: 1 1 30%;
+    max-width: 400px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sv-list-content .item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* .sv-list-content img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+  } */
+  
+  .sv-list-content h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  /* Margin adjustments */
+  .mb-5px {
+    margin-bottom: 5px;
+  }
+  
+  .mb-20px {
+    margin-bottom: 20px;
+  }
+  
+  .mb-25px {
+    margin-bottom: 25px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .sv-list-content .item {
+      flex: 1 1 45%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sv-list-content .item {
+      flex: 1 1 100%;
+    }
+  }
+  
+  
