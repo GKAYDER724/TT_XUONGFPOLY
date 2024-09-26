@@ -14,46 +14,79 @@ const basicService = [
     name: 'Hosting', 
     imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/hosting.svg', 
     title: 'Helpdesk iNET - Hỗ trợ dịch vụ hosting',
-    link : '/hosting' 
+    link : '#'
   },
   { 
     name: 'Email', 
     imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/email.svg', 
     title: 'Helpdesk iNET - Hỗ trợ dịch vụ email',
-    link : '/email' 
+    link : '#'
   },
   { 
     name: 'Cloud VPS', 
     imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/cloud-vps.svg',
-    title: 'Helpdesk iNET - Hỗ trợ dịch vụ Cloud VPS' 
+    title: 'Helpdesk iNET - Hỗ trợ dịch vụ Cloud VPS',
+    link : '#' 
   },
   { 
     name: 'Cloud Server', 
     imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/cloud-vps.svg', 
-    title: '' 
+    title: '',
+    link : '#' 
   },
   { 
     name: 'SSL', 
     imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/ssl.svg', 
-    title: 'Helpdesk iNET - Hỗ trợ dịch vụ SSL' 
+    title: 'Helpdesk iNET - Hỗ trợ dịch vụ SSL',
+    link : '#' 
   },
 ];
 
 const otherService = [
-  { name: 'Backorder', imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/backorder-logo.svg', title: 'Helpdesk iNET - Hỗ trợ dịch vụ backorder' },
-  { name: 'Sàn tên miền', imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/san-ten-mien.svg', title: 'Helpdesk iNET- Hỗ trợ dịch vụ sàn tên miền' },
-  { name: 'Google Workspace', imgSrc: '	https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/google-suite.svg', title: '' },
+  { 
+    name: 'Backorder', 
+    imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/backorder-logo.svg', 
+    title: 'Helpdesk iNET - Hỗ trợ dịch vụ backorder',
+    link : '#' 
+  },
+  { 
+    name: 'Sàn tên miền', 
+    imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/san-ten-mien.svg', 
+    title: 'Helpdesk iNET- Hỗ trợ dịch vụ sàn tên miền',
+    link : '#' 
+  },
+  { 
+    name: 'Google Workspace', 
+    imgSrc: '	https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/google-suite.svg', 
+    title: '',
+    link : '#' 
+  },
 ];
 
 const commonServices = [
-  { name: 'Tài khoản iNET', imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/acc-panel.svg', title: '' },
-  { name: 'Đại lý', imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/dai-ly.svg', title: '' },
-  { name: 'Cộng tác viên', imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/affiliate-helpdesk.svg', title: '' },
+  { 
+    name: 'Tài khoản iNET', 
+    imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/acc-panel.svg', 
+    title: '',
+    link : '#' 
+  },
+  { 
+    name: 'Đại lý', 
+    imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/dai-ly.svg', 
+    title: '',
+    link : '#' 
+  },
+  { 
+    name: 'Cộng tác viên', 
+    imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/affiliate-helpdesk.svg', 
+    title: '',
+    link : '#' 
+  },
 ];
 
 const ServiceList = ({ title, services }) => (
   <>
-    <h5 className="mb-25px">
+    <h5 className="mb-25px" style={{ display: 'flex', alignItems: 'center' }}>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
         <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
