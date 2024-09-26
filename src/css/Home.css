@@ -14,7 +14,8 @@ body {
     margin: 0 auto; 
     padding: 20px;
   }
-  
+
+
   /* Content styling */
   .content {
     text-align: left;
@@ -39,7 +40,7 @@ body {
     margin-top: 20px;
   }
   
-  .sv-list-content .item {
+  .sv-list-content .hm-item {
     flex: 1 1 30%;
     max-width: 400px;
     background-color: #f5f5f5;
@@ -50,16 +51,16 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .sv-list-content .item:hover {
+  .sv-list-content .hm-item:hover {
     transform: translateY(-5px);
   }
   
-  /* .sv-list-content img {
+  .sv-list-content img {
     border-radius: 50%;
     margin-bottom: 10px;
-  } */
+  }
   
-  .sv-list-content h4 {
+  .sv-list-content h5 {
     font-size: 1.2rem;
     font-weight: bold;
     color: #444;
@@ -89,6 +90,30 @@ body {
     .sv-list-content .item {
       flex: 1 1 100%;
     }
+  }
+
+  .hm-item {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+  }
+  
+  .img-sv {
+    margin-right: 10px; /* Adjust spacing between the image and title */
+    width: 80px; /* Set the image size */
+    height: 80px; /* Set the image size */
+    overflow: hidden; /* Hide any overflowing content */
+  }
+  
+  .item-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    max-width: 150px; 
+    flex-grow: 1; 
+  }
+
+  .item-title :hover {
+    color: #1a6cd7;
   }
   
   
