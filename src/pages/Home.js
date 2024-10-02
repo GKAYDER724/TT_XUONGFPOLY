@@ -1,4 +1,6 @@
 import React from 'react';
+import HeaderBottom from '../components/HeaderBottom';
+import { Link } from 'react-router-dom';  
 import Image from 'react-bootstrap/Image';
 import '../css/Home.css'; // Create this CSS file to style your components
 
@@ -8,7 +10,7 @@ const basicService = [
     name: 'Tên miền', 
     imgSrc: 'https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/domain-name.svg', 
     title: 'Helpdesk iNET - Hỗ trợ dịch vụ tên miền',
-    link : '#'
+    link : '/domain'
   },
   { 
     name: 'Hosting', 
@@ -84,29 +86,28 @@ const commonServices = [
   },
 ];
 
-const ServiceList = ({ title, services }) => (
+const ServiceList = ({ title, services, category }) => (
   <>
     <h5 className="mb-25px" style={{ display: 'flex', alignItems: 'center' }}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
-        <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-journal-text" viewBox="0 0 16 16">
+        <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
       </svg>{title}
     </h5>
     <div className={`sv-list-content ${title.toLowerCase().replace(' ', '-')}`}>
       {services.map((service, index) => (
         <div className="hm-item anm-df" key={index}>
-          <div className='img-sv'>
+          <div className="img-sv">
             <figure className="fig-img-ltr">
               <Image src={service.imgSrc} height="50" width="50" rounded />
             </figure>
           </div>
-          <div className='item-title'> 
-            <a className="anm-df" href={service.link} title={service.title}>
+          <div className="item-title"> 
+            <Link to={`/service/${category}/${service.name}`} className="anm-df" title={service.title}>
               <figcaption>
                 <h5 className="fig-title">{service.name}</h5>
               </figcaption>
-            </a>
+            </Link>
           </div>    
         </div>
       ))}
@@ -115,6 +116,8 @@ const ServiceList = ({ title, services }) => (
 );
 
 const Home = () => (
+  <>
+  <HeaderBottom />
   <section className="body-container">
     <div className="content">
       <div className="hm-container">
@@ -124,13 +127,15 @@ const Home = () => (
         </div>
       </div>
       <br />
-        <ServiceList title="Dịch vụ cơ bản" services={basicService} />
+        <ServiceList title="Dịch vụ cơ bản" services={basicService} category="basicService"/>
         <br />
-        <ServiceList title="Dịch vụ khác" services={otherService} />
+        <ServiceList title="Dịch vụ khác" services={otherService} category="otherService"/>
         <br />
-        <ServiceList title="Hệ thống" services={commonServices} /> 
+        <ServiceList title="Hệ thống" services={commonServices} category="commonServices"/> 
     </div>
   </section>
+  </>
+  
 );
 
 export default Home;

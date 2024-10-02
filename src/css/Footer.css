@@ -25,13 +25,13 @@
 
 .grid-5 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5-column grid layout */
+    grid-template-columns: repeat(5, 1fr); 
     gap: 20px;
 }
 
 .col-grid {
     min-width: 180px;
-    max-width: 220px;
+    max-width: 150px;
 }
 
 /* Footer Item Styles */
@@ -45,7 +45,7 @@
 .list-link {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 0; 
 }
 
 .list-link li {
@@ -102,7 +102,7 @@
         grid-template-columns: 1fr; /* 1-column layout for mobile */
     }
     .item {
-        text-align: center;
+        /* text-align: center; */
     }
     .ft-info .copy-right {
         font-size: 12px;

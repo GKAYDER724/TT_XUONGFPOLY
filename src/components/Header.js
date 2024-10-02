@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown, Button, Form, InputGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { FaUser, FaBell, FaLock, FaEnvelope, FaRandom, FaShieldAlt, FaArrowLeft, FaShoppingBasket, FaSearch } from 'react-icons/fa';
 
 const Header = () => { 
@@ -89,15 +88,6 @@ const Header = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-    <div className="header">
-      <div className="container">
-        <input type="text" placeholder="Nhập từ khóa tìm kiếm" className="search-input" />
-        <Button variant="warning" size="lg">
-          <FaSearch className="search-icon" />
-        </Button>{' '}
-      </div>
-    </div>
   </header>
     
   );
