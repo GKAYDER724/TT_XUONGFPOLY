@@ -27,7 +27,7 @@ const Header = () => {
                     <a className="nav-link text-dark" href="/">Cộng tác viên</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-dark" href="/">Khuyến mãi</a>
+                    <a className="nav-link text-dark" href="/domain">hướng dẫn</a>
                 </li>
                 <li className="nav-item">
                     <button className="nav-link text-dark bg-primary border-10" onClick={() => window.location.href = '/ticket'}>

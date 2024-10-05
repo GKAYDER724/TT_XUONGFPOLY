@@ -1,0 +1,131 @@
+/* Helpdesk Component Styles */
+.sidebar {
+  background-color: #f8f9fa; /* Background color of the sidebar */
+  padding: 10px;
+  width: 250px; /* Adjust as needed */
+  overflow-y: auto;
+  height: 900px;
+}
+
+.toggle-section {
+  background-color: #ffffff; /* Màu nền mặc định */
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #333; /* Màu chữ */
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.toggle-section.active {
+  background-color: #e9ecef; /* Màu nền khi đang mở */
+  color: #0056b3; /* Màu chữ khi đang mở */
+}
+
+.sub-toggle {
+  background-color: transparent; /* Màu nền mặc định */
+  padding: 8px 10px;
+  margin: 0;
+  cursor: pointer;
+  color: #555; /* Màu chữ */
+  font-weight: normal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.sub-toggle.active {
+  background-color: #f1f1f1; /* Màu nền khi đang mở */
+  color: #0056b3; /* Màu chữ khi đang mở */
+}
+
+.sub-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-list li {
+  padding: 5px 15px;
+  color: #666; /* Màu chữ */
+  background-color: #f8f9fa; /* Màu nền sub-item */
+}
+
+.caret-icon {
+  transition: transform 0.3s;
+}
+
+.caret-icon.open {
+  transform: rotate(180deg); /* Xoay icon khi mở */
+}
+.sub-list li {
+  cursor: pointer; /* Đặt con trỏ dạng pointer cho các mục con */
+}
+
+.focused {
+  background-color: #e0f7fa;
+  color: #006064;
+  font-weight: bold;
+}
+/*  */
+body {
+  background-color: #f8f9fa;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+.accordion-button {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.accordion-button:hover {
+  text-decoration: underline;
+}
+/*  */
+/* Header Section */
+.header-section {
+  background-color: #007bff;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.search-bar input {
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.search-bar button {
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+/* Service Card Styling */
+.service-card {
+  text-align: center;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
