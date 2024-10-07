@@ -243,6 +243,7 @@ h1 {
   transition: background 0.3s, box-shadow 0.3s;
 }
 
+
 .tile:hover {
   background: #f5f5f5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -364,4 +365,91 @@ h1 {
 
 .btn-default:hover {
   background-color: #e2e6ea;
+}
+.chat-input button {
+  margin-left: 10px;
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.text-dark {
+  color: black;  /* Màu đen cho văn bản */
+  text-decoration: none;  /* Xóa gạch chân mặc định */
+}
+
+.text-dark:hover {
+  text-decoration: underline;  /* Thêm gạch chân khi hover */
+}
+.focused {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* side bar  */
+/* Sidebar Styles */
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}
+
+.toggle-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 8px 12px;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  cursor: pointer;
+}
+
+.toggle-section.active {
+  background-color: #ced4da;
+  color: #495057;
+}
+
+.caret-icon {
+  transition: transform 0.3s ease;
+}
+
+.caret-icon.open {
+  transform: rotate(180deg);
+}
+
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.sub-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  background-color: #f1f3f5;
+  cursor: pointer;
+}
+
+.sub-toggle.active {
+  background-color: #dee2e6;
+}
+
+.sub-list {
+  padding-left: 30px;
+}
+
+.sub-list li {
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.focused {
+  background-color: #e9ecef;
+  font-weight: bold;
+
 }

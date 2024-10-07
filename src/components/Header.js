@@ -17,6 +17,7 @@ const Header = () => {
               />
             </a>
           </div>
+
         </Navbar.Brand>
 
         {/* Mobile toggle button */}
