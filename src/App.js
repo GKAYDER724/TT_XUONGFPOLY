@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Tutorials from './pages/Tutorials';
+import Blog from './pages/Blog';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/login';
@@ -35,6 +37,9 @@ function App() {
             <Route path="/quick3" element={<Quick3 />} />
             <Route path="/transfer1" element={<Transfer1 />} />
             <Route path="/transfer2" element={<Transfer2 />} />
+            <Route path="/tutorials" element={<Tutorials />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/service/:category/:serviceName" element={<ServiceDetail />} />
             <Route path="/ticket" element={<TicketPage />} />
           </Routes>
         <Footer />

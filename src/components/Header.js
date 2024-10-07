@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown, Button, Form, InputGroup } from 'react-bootstrap';
 import { FaUser, FaBell, FaLock, FaEnvelope, FaRandom, FaShieldAlt, FaArrowLeft, FaShoppingBasket, FaSearch } from 'react-icons/fa';
+import '../css/ServiceMenu.css';
 
 const Header = () => { 
   return (
@@ -40,13 +41,13 @@ const Header = () => {
               </svg>
               <span style={{ marginLeft: '6px' }}>Trung tâm kiến thức</span>
             </Nav.Link>
-            <Nav.Link href="">
+            <Nav.Link href="/tutorials">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-signpost-2" viewBox="0 0 16 16">
                 <path d="M7 1.414V2H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h5v1H2.5a1 1 0 0 0-.8.4L.725 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4H7v5h2v-5h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H9V6h4.5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.3 2.4a1 1 0 0 0-.8-.4H9v-.586a1 1 0 0 0-2 0M13.5 3l.75 1-.75 1H2V3zm.5 5v2H2.5l-.75-1 .75-1z"/>
               </svg>
               <span style={{ marginLeft: '6px' }}>Tutorials</span>
             </Nav.Link>
-            <Nav.Link href="" style={{ display: 'flex', alignItems: 'center' }}>
+            <Nav.Link href="/blog" style={{ display: 'flex', alignItems: 'center' }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bootstrap" viewBox="0 0 16 16">
                 <path d="M5.062 12h3.475c1.804 0 2.888-.908 2.888-2.396 0-1.102-.761-1.916-1.904-2.034v-.1c.832-.14 1.482-.93 1.482-1.816 0-1.3-.955-2.11-2.542-2.11H5.062zm1.313-4.875V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23zm0 3.762V8.162h1.822c1.236 0 1.887.463 1.887 1.348 0 .896-.627 1.377-1.811 1.377z"/>
                 <path d="M0 4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4zm4-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3z"/>
@@ -69,15 +70,42 @@ const Header = () => {
               <span style={{ marginLeft: '6px' }}>Ticket</span>
             </Nav.Link>
             <NavDropdown title="Dịch vụ" id="basic-nav-dropdown">
-              <NavDropdown.Item href="">Action</NavDropdown.Item>
-              <NavDropdown.Item href="">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="">
-                Separated link
-              </NavDropdown.Item>
+              <div className="service-grid">
+                <NavDropdown.Item href="">
+                  <div className="service-item text-center">
+                    <img className="service-img" height="36" width="36" src="https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/acc-panel.svg" alt="Tài khoản" />
+                    <p>Tài khoản</p>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="">
+                  <div className="service-item text-center">
+                    <img className="service-img" height="36" width="36" src="https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/hot-sale.svg" alt="Khuyến mãi" />
+                    <p>Khuyến mãi</p>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="">
+                  <div className="service-item text-center">
+                    <img className="service-img" height="36" width="36" src="https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/ssl.svg" alt="SSL" />
+                    <p>SSL</p>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="">
+                  <div className="service-item text-center">
+                    <img className="service-img" height="36" width="36" src="	https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/whois-multiple.svg" alt="Whois nhiều tên miền" />
+                    <p>Whois nhiều tên miền</p>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="">
+                  <div className="service-item text-center">
+                    <img className="service-img" height="36" width="36" src="	https://helpdesk.inet.vn/public/img/svg/menu-dich-vu/lookup-info.svg" alt="Lookup thông tin Hosting" />
+                    <p>Lookup thông tin Hosting</p>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#" className="text-center all-services">
+                  Danh bạ sản phẩm dịch vụ
+                </NavDropdown.Item>
+              </div>
             </NavDropdown>
             <Nav.Link href="/login" style={{ display: 'flex', alignItems: 'center' }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">

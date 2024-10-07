@@ -1,21 +1,43 @@
-const sidebarItems = [
-    { title: 'Dịch vụ cơ bản', subitems: ['Tên miền', 'Hosting', 'Email', 'Cloud VPS', 'Cloud Server', 'SSL'] },
-    { title: 'Dịch vụ khác' },
-    { title: 'Hệ thống' },
-];
-
-const submenuItems = [
-    'Dịch vụ cơ bản', 'Tên miền', 'Quy trình & Quy chế', 'Hướng dẫn nhanh', 'DNS & Trỏ bản ghi',
-    'Chuyển nhà đăng ký', 'Hỗ trợ tên miền miễn phí', 'Dịch vụ cộng thêm', 'Nâng cao'
-];
-
-const contentSections = [
-    { title: 'Tên miền', description: 'Helpdesk iNET Domain - cung cấp các tips, các hướng dẫn cách sử dụng tên miền cũng như các chính sách về tên miền hiện hành.' },
-    { title: 'Quy trình & Quy chế', description: 'Các tài liệu về quy trình & quy chế của tên miền' },
-    { title: 'Đăng ký mới (11 bài viết)', description: 'Các tài liệu về quy trình đăng ký tên miền' },
-    { title: 'Chuyển nhượng tên miền (10 bài viết)', description: 'Các tài liệu về quy trình chuyển nhượng tên miền' },
-    { title: 'Gia hạn và thu hồi (4 bài viết)', description: 'Các tài liệu về quy trình gia hạn và thu hồi tên miền' },
-    { title: 'Hướng dẫn nhanh (8 bài viết)', description: 'Hướng dẫn đăng ký và sử dụng tên miền tại iNET' },
-    { title: 'DNS & Trỏ bản ghi (19 bài viết)', description: 'Hướng dẫn quản lý DNS và bản ghi tên miền' },
-    { title: 'Chuyển nhà đăng ký (2 bài viết)', description: 'Hướng dẫn tên miền về iNET hoặc qua các nhà đăng ký khác' },
-];
+<li class="i-mn-all-prod dropdown open">
+    <a href="" iclass="dropdown-toggle">
+        Dịch vụ <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+       <li role="menuitem" class="ng-scope" style="">
+            <a class="text-center" href="">
+                <img class="img-thumb" height="36" width="36" src="/public/img/svg/menu-dich-vu/acc-panel.svg">
+                <h5 class="mt-5px mb-0px i-title ng-binding">Tài khoản</h5>
+            </a>
+        </li>
+        <li role="menuitem" class="ng-scope">
+            <a class="text-center" href="">
+                <img class="img-thumb" height="36" width="36" src="/public/img/svg/menu-dich-vu/hot-sale.svg">
+                <h5 class="mt-5px mb-0px i-title ng-binding">Khuyến mãi</h5>
+            </a>
+        </li>
+        <li role="menuitem" class="ng-scope">
+            <a class="text-center" href="">
+                <img class="img-thumb" height="36" width="36" src="/public/img/svg/menu-dich-vu/ssl.svg">
+                <h5 class="mt-5px mb-0px i-title ng-binding">SSL</h5>
+            </a>
+        </li>
+        <li role="menuitem" class="ng-scope">
+            <a class="text-center" href="">
+                <img class="img-thumb" height="36" width="36" src="/public/img/svg/menu-dich-vu/whois-multiple.svg">
+                <h5 class="mt-5px mb-0px i-title ng-binding">Whois nhiều tên miền</h5>
+            </a>
+        </li>
+        <li role="menuitem" class="ng-scope">
+            <a class="text-center" href="">
+                <img class="img-thumb" height="36" width="36" src="/public/img/svg/menu-dich-vu/lookup-info.svg">
+                <h5 class="mt-5px mb-0px i-title ng-binding">Lookup thông tin Hosting</h5>
+            </a>
+        </li>
+        <!-- Khi nào nhiều dịch vụ quá thì sử dụng-->
+        <li class="w-100-per text-center all-prod">
+            <a href="#" >
+                Danh bạ sản phẩm dịch vụ
+            </a>
+        </li>
+    </ul>
+</li>

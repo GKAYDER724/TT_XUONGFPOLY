@@ -1,0 +1,354 @@
+
+
+.blog-main {
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-item {
+    display: flex;
+    position: relative;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(222, 221, 221, 0.7);
+    color: #4e4d4d;
+    width: 100%;
+    padding: 10px;
+    transition: top 0.3s ease-in-out; /* Transition for overlay movement */
+}
+
+.overlay :hover {
+    transform: translateY(-10px); /* Moves grid item up slightly when hovered */
+}
+
+/*  */
+.row{
+    padding-left: 20px;
+}
+
+.top-heading-group {
+    display: flex;
+    align-items: center;
+}
+
+.top-heading-group .line-through{
+    margin-bottom: 25px;
+}
+
+.line-through {
+    position: relative;
+    z-index: 1;
+}
+
+.total-element {
+    display: flex; /* Allows the content and the border to align horizontally */
+    align-items: center; /* Vertically center the content */
+}
+
+.total-element::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: #a19d9d; /* Horizontal line */
+    margin: 10px; /* Space between the line and text */
+}
+
+.top-heading-group .total-element {
+    flex: 1;
+    margin: 0;
+    padding-right: 5px;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+.top-heading-group .view-option {
+    background-color: #fff;
+    padding-left: 5px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-right {
+    text-align: right;
+}
+
+[view-grid=none] {
+    margin: 0;
+    display: inherit;
+}
+
+[view-grid=none] .article-item {
+    padding: 0 0 15px;
+    margin: 0 0 15px;
+}
+
+.sr-article>.article-item {
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333333;
+}
+
+figure {
+    margin: 0;
+}
+
+figure.figure-thumbnail {
+    padding: 10px;
+    background-color: #efefef;
+    margin-bottom: 25px;
+}
+
+[view-grid] figure.figure-thumbnail>.thumbnail {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.sr-article .figure-thumbnail>.thumbnail {
+    width: 25%;
+    height: inherit;
+    margin-right: 0;
+}
+
+figure.figure-thumbnail>.thumbnail, figure.figure-thumbnail>figcaption {
+    float: left;
+}
+
+figure.figure-thumbnail>.thumbnail {
+    width: 65px;
+    height: 65px;
+    color: #afafaf;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.figure-thumbnail>.thumbnail {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
+h6 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+h6 a{
+    color: #333333;
+    text-decoration: none;
+}
+
+h6 a:hover{
+    color: #1a6cd7;
+    transition: 0.3s;
+}
+
+.sr-article .figure-thumbnail>.thumbnail+figcaption {
+    width: calc(100% - 25%);
+}
+
+.figure-thumbnail>.thumbnail+figcaption {
+    padding-left: 15px;
+}
+
+[view-grid] figure figcaption .acc-group {
+    margin-right: 8px;
+}
+
+.acc-group img {
+    border-radius: 5px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+img {
+    max-width: 100%;
+}
+
+[view-grid] figure figcaption .acc-group a {
+    padding-left: 10px;
+    text-decoration: none;
+    color: #525252;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+[view-grid] figure figcaption .acc-group a:hover {
+    color: #1a6cd7;
+    transition: 0.3s;
+}
+
+.article-item .short-info {
+    margin: 0 5px;
+}
+
+.short-info>:last-child {
+    margin-right: 0;
+}
+
+time-from-now .post-date {
+    color: #929292;
+    font-size: 12px;
+}
+
+[view-grid] article[class*=post] .txt-content, [view-grid] figure figcaption .txt-content {
+    font-size: 13px;
+    color: #727272;
+}
+
+[view-grid] figure figcaption .txt-content>span {
+    display: block;
+}
+
+.txt-content>span {
+    color: #424242;
+    font-size: 13px;
+    word-break: break-word;
+}
+
+a {
+    color: #0a6ccb;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #004382;
+    transition: 0.3s;
+}
+
+.tag-more-action-group {
+    display: flex;
+    align-items: baseline;
+}
+
+.tag-more-action-group .tag-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.tag-group {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.tag-more-action-group .tag-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.tag-group {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.tag-group .tag-group-title {
+    display: inline-block;
+    padding: 2px 5px;
+    background-color: #727272;
+    color: #f2f2f2;
+} 
+
+.tag-group .tag-item {
+    display: inline-block;
+    margin: 0 5px 3px 0;
+    padding: 1px 5px;
+    border: 1px solid #eaeaea;
+    color: #727272;
+    transition: all .15s ease-in-out 0s;
+    text-decoration: none;
+}
+
+.tag-group .tag-item:hover {
+    background-color: #0a6ccb;
+    color: #333333;
+}
+
+.tag-more-action-group .more-action-group {
+    display: flex;
+    align-items: center;
+}
+
+.tag-more-action-group .comment-link, .tag-more-action-group .more-action-group a {
+    color: #727272;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.tag-more-action-group .more-action-group>* {
+    margin-left: 5px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+[view-grid=none] [uib-dropdown]>.dropdown-menu {
+    right: -8px;
+    left: inherit;
+}
+
+[uib-dropdown] .dropdown-menu {
+    border: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+li {
+    display: list-item;
+    unicode-bidi: isolate;
+}
+
+.dropdown-menu li {
+    position: relative;
+}
