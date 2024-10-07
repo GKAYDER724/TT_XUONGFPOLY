@@ -1,171 +1,82 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import Sidebar from './sidebar';
-import { Link } from 'react-router-dom';
-const Transfer2 = () => {
-    return (
-        <div className="d-flex">
-            < Sidebar />
-            <div className="container-fluid">
+import domainPricingImage from '../assets/download.png'; // Hình ảnh thứ nhất
+import secondImage from '../assets/doawn.png'; // Hình ảnh thứ hai
 
-                {/* Sidebar */}
+const Quick2 = () => {
+  return (
+    <div className="d-flex">
+      <Sidebar />
+      <div className="container-fluid">
+        <div className="col-md-9 p-4">
+          <h4><strong>Bảng giá tên miền và các loại phí</strong></h4>
+          <p>Để xem bảng giá tên miền, vui lòng truy cập vào <a href="https://inet.vn/domain/bang-gia-ten-mien">iNET</a>.</p>
 
+          <h5>1. Tên miền .VN</h5>
+          <p>Tên miền .VN theo quy định sẽ được áp dụng các phí bao gồm Lệ phí đăng ký, Phí duy trì và phần Dịch vụ tài khoản quản trị tên miền.</p>
 
-                {/* Content */}
-                <div className="col-md-9 p-3">
+          <ul>
+            <li>Lệ phí đăng ký: 200.000đ</li>
+            <li>Phí duy trì: 350.000đ</li>
+            <li>Dịch vụ tài khoản quản trị tên miền: 200.000đ</li>
+          </ul>
 
-                    <h4><strong>Thủ tục và chi phí</strong></h4>
-                    <p>
-                        Helpdesk iNET Domain - cung cấp các tips, các hướng dẫn cách sử dụng tên miền cũng như các chính sách về tên miền hiện hành.
-                    </p>
+          <h5>2. Tên miền .VN tiếng Việt</h5>
+          <p>Tên miền .VN tiếng Việt miễn phí đăng ký.</p>
 
+          <h5>3. Tên miền quốc tế (TLD)</h5>
+          <p>Tên miền quốc tế chỉ có một phí duy trì hàng năm.</p>
 
-                    Hướng dẫn Whitelist Email trên Gmail
-                    Bước 1: Đăng nhập vào tài khoản Gmail của bạn
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Tên miền</th>
+                <th>Phí đăng ký</th>
+                <th>Phí duy trì năm 1</th>
+                <th>Tổng phí</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>.vn</td>
+                <td>200.000đ</td>
+                <td>350.000đ</td>
+                <td>770.000đ</td>
+              </tr>
+              <tr>
+                <td>.com</td>
+                <td>319.000đ</td>
+                <td>329.000đ</td>
+                <td>648.000đ</td>
+              </tr>
+            </tbody>
+          </table>
 
-                    Mở trình   Hướng dẫn Whitelist Email trên Gmail
-                    Bước 1: Đăng nhập vào tài khoản Gmail của bạn
+          <p><strong>Lưu ý:</strong> Các tên miền quốc tế khi đăng ký cần tuân thủ chính sách đăng ký quốc tế.</p>
 
-                    Mở trình duyệt web và truy cập vào Gmail.
-                    Nhập địa chỉ email và mật khẩu của bạn để đăng nhập.
-                    Bước 2: Truy cập vào phần Cài đặt
+          {/* Thêm hình ảnh thứ nhất */}
+          <div className="text-center my-4">
+            <img 
+              src={domainPricingImage} 
+              alt="Bảng giá tên miền" 
+              style={{ width: '550px', height: '250px' }} 
+              className="img-fluid" 
+            />
+          </div>
 
-                    Nhấp vào biểu tượng Bánh răng ở góc trên bên phải.
-                    Chọn Xem tất cả cài đặt từ menu thả xuống.
-                    Bước 3: Thêm địa chỉ email vào danh sách cho phép
-
-                    Trong tab Filters and Blocked Addresses (Bộ lọc và Địa chỉ Bị chặn), cuộn xuống và nhấp vào Create a new filter (Tạo bộ lọc mới).
-                    Trong hộp thoại hiện ra, bạn có thể nhập địa chỉ email mà bạn muốn whitelist vào ô From (Từ). Ví dụ: example@example.com.
-                    Nhấn nút Create filter (Tạo bộ lọc).
-                    Bước 4: Chọn hành động cho bộ lọc
-
-                    Trong bước này, bạn sẽ thấy các tùy chọn để xử lý email từ địa chỉ đã nhập.
-                    Để whitelist, hãy chọn Never send it to Spam (Không bao giờ gửi vào Spam). Bạn cũng có thể chọn Always mark it as important (Luôn đánh dấu là quan trọng) nếu muốn.
-                    Nhấn vào Create filter (Tạo bộ lọc) để hoàn tất.
-                    Bước 5: Kiểm tra lại cài đặt
-
-                    Để chắc chắn rằng địa chỉ email đã được whitelist, bạn có thể gửi một email từ địa chỉ đó và kiểm tra xem nó có đến hộp thư đến của bạn hay không.
-                    Lưu ý
-                    Nếu bạn whitelist một miền (domain) thay vì một địa chỉ email cụ thể, bạn có thể nhập @example.com vào ô From. Điều này sẽ cho phép tất cả email từ miền đó.  Hướng dẫn Whitelist Email trên Gmail
-                    Bước 1: Đăng nhập vào tài khoản Gmail của bạn
-
-                    Mở trình duyệt web và truy cập vào Gmail.
-                    Nhập địa chỉ email và mật khẩu của bạn để đăng nhập.
-                    Bước 2: Truy cập vào phần Cài đặt
-
-                    Nhấp vào biểu tượng Bánh răng ở góc trên bên phải.
-                    Chọn Xem tất cả cài đặt từ menu thả xuống.
-                    Bước 3: Thêm địa chỉ email vào danh sách cho phép
-
-                    Trong tab Filters and Blocked Addresses (Bộ lọc và Địa chỉ Bị chặn), cuộn xuống và nhấp vào Create a new filter (Tạo bộ lọc mới).
-                    Trong hộp thoại hiện ra, bạn có thể nhập địa chỉ email mà bạn muốn whitelist vào ô From (Từ). Ví dụ: example@example.com.
-                    Nhấn nút Create filter (Tạo bộ lọc).
-                    Bước 4: Chọn hành động cho bộ lọc
-
-                    Trong bước này, bạn sẽ thấy các tùy chọn để xử lý email từ địa chỉ đã nhập.
-                    Để whitelist, hãy chọn Never send it to Spam (Không bao giờ gửi vào Spam). Bạn cũng có thể chọn Always mark it as important (Luôn đánh dấu là quan trọng) nếu muốn.
-                    Nhấn vào Create filter (Tạo bộ lọc) để hoàn tất.
-                    Bước 5: Kiểm tra lại cài đặt
-
-                    Để chắc chắn rằng địa chỉ email đã được whitelist, bạn có thể gửi một email từ địa chỉ đó và kiểm tra xem nó có đến hộp thư đến của bạn hay không.
-                    Lưu ý
-                    Nếu bạn whitelist một miền (domain) thay vì một địa chỉ email cụ thể, bạn có thể nhập @example.com vào ô From. Điều này sẽ cho phép tất cả email từ miền đó.n Cài đặt
-
-                    Nhấp vào biểu tượng Bánh răng ở góc trên bên phải.
-                    Chọn Xem tất cả cài đặt từ menu thả xuống.
-                    Bước 3: Thêm địa chỉ email vào danh sách cho phép
-
-                    Trong tab Filters and Blocked Addresses (Bộ lọc và Địa chỉ Bị chặn), cuộn xuống và nhấp vào Create a new filter (Tạo bộ lọc mới).
-                    Trong hộp thoại hiện ra, bạn có thể nhập địa chỉ email mà bạn muốn whitelist vào ô From (Từ). Ví dụ: example@example.com.
-                    Nhấn nút Create filter (Tạo bộ lọc).
-                    Bước 4: Chọn hành động cho bộ lọc
-
-                    Trong bước này, bạn sẽ thấy các tùy chọn để xử lý email từ địa chỉ đã nhập.
-                    Để whitelist, hãy chọn Never send it to Spam (Không bao giờ gửi vào Spam). Bạn cũng có thể chọn Always mark it as important (Luôn đánh dấu là quan trọng) nếu muốn.
-                    Nhấn vào Create filter (Tạo bộ lọc) để hoàn tất.
-                    Bước 5: Kiểm tra lại cài đặt
-
-                    Để chắc chắn rằng địa chỉ email đã được whitelist, bạn có thể gửi một email từ địa chỉ đó và kiểm tra xem nó có đến hộp thư đến của bạn hay không.
-                    Lưu ý
-                    Nếu bạn whitelist một miền (domain) thay vì một địa chỉ email cụ thể, bạn có thể nhập @example.com vào ô From. Điều này sẽ cho phép tất cả email từ miền đó.
-                    Hướng dẫn Whitelist Email trên Gmail
-                    Bước 1: Đăng nhập vào tài khoản Gmail của bạn
-
-                    Mở trình   Hướng dẫn Whitelist Email trên Gmail
-                    Bước 1: Đăng nhập vào tài khoản Gmail của bạn
-
-                    Mở trình duyệt web và truy cập vào Gmail.
-                    Nhập địa chỉ email và mật khẩu của bạn để đăng nhập.
-                    Bước 2: Truy cập vào phần Cài đặt
-
-                    Nhấp vào biểu tượng Bánh răng ở góc trên bên phải.
-                    Chọn Xem tất cả cài đặt từ menu thả xuống.
-                    Bước 3: Thêm địa chỉ email vào danh sách cho phép
-
-                    Trong tab Filters and Blocked Addresses (Bộ lọc và Địa chỉ Bị chặn), cuộn xuống và nhấp vào Create a new filter (Tạo bộ lọc mới).
-                    Trong hộp thoại hiện ra, bạn có thể nhập địa chỉ email mà bạn muốn whitelist vào ô From (Từ). Ví dụ: example@example.com.
-                    Nhấn nút Create filter (Tạo bộ lọc).
-                    Bước 4: Chọn hành động cho bộ lọc
-
-                    Trong bước này, bạn sẽ thấy các tùy chọn để xử lý email từ địa chỉ đã nhập.
-                    Để whitelist, hãy chọn Never send it to Spam (Không bao giờ gửi vào Spam). Bạn cũng có thể chọn Always mark it as important (Luôn đánh dấu là quan trọng) nếu muốn.
-                    Nhấn vào Create filter (Tạo bộ lọc) để hoàn tất.
-                    Bước 5: Kiểm tra lại cài đặt
-
-                    Để chắc chắn rằng địa chỉ email đã được whitelist, bạn có thể gửi một email từ địa chỉ đó và kiểm tra xem nó có đến hộp thư đến của bạn hay không.
-                    Lưu ý
-                    Nếu bạn whitelist một miền (domain) thay vì một địa chỉ email cụ thể, bạn có thể nhập @example.com vào ô From. Điều này sẽ cho phép tất cả email từ miền đó.  Hướng dẫn Whitelist Email trên Gmail
-                    Bước 1: Đăng nhập vào tài khoản Gmail của bạn
-
-                    Mở trình duyệt web và truy cập vào Gmail.
-                    Nhập địa chỉ email và mật khẩu của bạn để đăng nhập.
-                    Bước 2: Truy cập vào phần Cài đặt
-
-                    Nhấp vào biểu tượng Bánh răng ở góc trên bên phải.
-                    Chọn Xem tất cả cài đặt từ menu thả xuống.
-                    Bước 3: Thêm địa chỉ email vào danh sách cho phép
-
-                    Trong tab Filters and Blocked Addresses (Bộ lọc và Địa chỉ Bị chặn), cuộn xuống và nhấp vào Create a new filter (Tạo bộ lọc mới).
-                    Trong hộp thoại hiện ra, bạn có thể nhập địa chỉ email mà bạn muốn whitelist vào ô From (Từ). Ví dụ: example@example.com.
-                    Nhấn nút Create filter (Tạo bộ lọc).
-                    Bước 4: Chọn hành động cho bộ lọc
-
-                    Trong bước này, bạn sẽ thấy các tùy chọn để xử lý email từ địa chỉ đã nhập.
-                    Để whitelist, hãy chọn Never send it to Spam (Không bao giờ gửi vào Spam). Bạn cũng có thể chọn Always mark it as important (Luôn đánh dấu là quan trọng) nếu muốn.
-                    Nhấn vào Create filter (Tạo bộ lọc) để hoàn tất.
-                    Bước 5: Kiểm tra lại cài đặt
-
-                    Để chắc chắn rằng địa chỉ email đã được whitelist, bạn có thể gửi một email từ địa chỉ đó và kiểm tra xem nó có đến hộp thư đến của bạn hay không.
-                    Lưu ý
-                    Nếu bạn whitelist một miền (domain) thay vì một địa chỉ email cụ thể, bạn có thể nhập @example.com vào ô From. Điều này sẽ cho phép tất cả email từ miền đó.n Cài đặt
-
-                    Nhấp vào biểu tượng Bánh răng ở góc trên bên phải.
-                    Chọn Xem tất cả cài đặt từ menu thả xuống.
-                    Bước 3: Thêm địa chỉ email vào danh sách cho phép
-
-                    Trong tab Filters and Blocked Addresses (Bộ lọc và Địa chỉ Bị chặn), cuộn xuống và nhấp vào Create a new filter (Tạo bộ lọc mới).
-                    Trong hộp thoại hiện ra, bạn có thể nhập địa chỉ email mà bạn muốn whitelist vào ô From (Từ). Ví dụ: example@example.com.
-                    Nhấn nút Create filter (Tạo bộ lọc).
-                    Bước 4: Chọn hành động cho bộ lọc
-
-                    Trong bước này, bạn sẽ thấy các tùy chọn để xử lý email từ địa chỉ đã nhập.
-                    Để whitelist, hãy chọn Never send it to Spam (Không bao giờ gửi vào Spam). Bạn cũng có thể chọn Always mark it as important (Luôn đánh dấu là quan trọng) nếu muốn.
-                    Nhấn vào Create filter (Tạo bộ lọc) để hoàn tất.
-                    Bước 5: Kiểm tra lại cài đặt
-
-                    Để chắc chắn rằng địa chỉ email đã được whitelist, bạn có thể gửi một email từ địa chỉ đó và kiểm tra xem nó có đến hộp thư đến của bạn hay không.
-                    Lưu ý
-                    Nếu bạn whitelist một miền (domain) thay vì một địa chỉ email cụ thể, bạn có thể nhập @example.com vào ô From. Điều này sẽ cho phép tất cả email từ miền đó.
-
-
-
-
-                </div>
-            </div>
-            {/* Phần hiển thị nội dung bên phải */}
-
+          {/* Thêm hình ảnh thứ hai */}
+          <div className="text-center my-4">
+            <img 
+              src={secondImage} 
+              alt="Hình ảnh thứ hai" 
+              style={{ width: '550px', height: '250px' }} 
+              className="img-fluid" 
+            />
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
-export default Transfer2;
+export default Quick2;
