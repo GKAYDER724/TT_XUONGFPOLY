@@ -39,7 +39,6 @@ function App() {
             <Route path="/transfer2" element={<Transfer2 />} />
             <Route path="/tutorials" element={<Tutorials />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/service/:category/:serviceName" element={<ServiceDetail />} />
             <Route path="/ticket" element={<TicketPage />} />
           </Routes>
         <Footer />
