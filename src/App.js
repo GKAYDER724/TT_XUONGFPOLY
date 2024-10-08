@@ -10,11 +10,11 @@ import Hosting from './pages/Hosting';
 import Domain from './pages/domain';
 import Quickguide from './pages/quickguide';
 import Transfer from './pages/transfer';
-import Quick1 from './pages/quick1';
-import Quick2 from './pages/quick2';
-import Quick3 from './pages/quick3';
-import Transfer1 from './pages/transfer1';
-import Transfer2 from './pages/transfer2';
+import Quick1 from './pages/baiviet/quick1';
+import Quick2 from './pages/baiviet/quick2';
+import Quick3 from './pages/baiviet/quick3';
+import Transfer1 from './pages/baiviet/transfer1';
+import Transfer2 from './pages/baiviet/transfer2';
 import "./assets/style.css";
 
 function App() {

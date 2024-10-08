@@ -1,7 +1,7 @@
 import React from 'react';
-import Sidebar from './sidebar';
-import domainPricingImage from '../assets/download.png'; // Hình ảnh thứ nhất
-import secondImage from '../assets/doawn.png'; // Hình ảnh thứ hai
+import Sidebar from '../sidebar';
+import domainPricingImage from '../../assets/download.png'; // Hình ảnh thứ nhất
+import secondImage from '../../assets/doawn.png'; // Hình ảnh thứ hai
 
 const Quick2 = () => {
   return (
