@@ -1,0 +1,20 @@
+{
+    "tickets": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "content1": "Issue with product order.",
+        "file": "file1.pdf",  
+        "createdAt": "2024-10-01T10:00:00Z",
+        "response": {
+          "requestor": "Nguyễn Văn A",
+          "department": "Phòng Kỹ thuật",
+          "sentDate": "2021-10-14T07:30:00Z",
+          "content": "We are looking into your issue and will get back to you shortly.",
+          "priority": "Cao"
+        }
+      }
+    ]
+  }
+  

@@ -3,13 +3,15 @@ import { Container, Nav, Navbar, NavDropdown, Button, Form, InputGroup } from 'r
 import { FaUser, FaBell, FaLock, FaEnvelope, FaRandom, FaShieldAlt, FaArrowLeft, FaShoppingBasket, FaSearch } from 'react-icons/fa';
 import '../css/ServiceMenu.css';
 
-const Header = () => { 
+const Header = () => {
+
   return (
     <header>
     <Navbar expand="lg" bg="light" data-bs-theme="light">
       <Container>
         <Navbar.Brand>
           <div className="logo">
+
             <a className="nav-link" href="/">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT30SN4IsdK3J5FvD_6EFV8gvgZJvBB5XrpQA&s"
@@ -118,7 +120,6 @@ const Header = () => {
       </Container>
     </Navbar>
   </header>
-    
   );
 };
 

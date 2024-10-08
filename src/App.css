@@ -375,6 +375,7 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .text-dark {
   color: black;  /* Màu đen cho văn bản */
   text-decoration: none;  /* Xóa gạch chân mặc định */
@@ -453,3 +454,32 @@ h1 {
   font-weight: bold;
 
 }
+
+
+.banner {
+  background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/08/background-banner-dep-doc-dao.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 180px;
+  color: white;
+  border-radius: 10px;
+}
+
+.banner h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.banner button {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+
+
