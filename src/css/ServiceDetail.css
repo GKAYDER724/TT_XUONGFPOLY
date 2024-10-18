@@ -1,121 +1,102 @@
-/* Parent container */
-/* .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    height: 100vh; 
-} */
+/* Reset các kiểu mặc định của trình duyệt */  
+* {  
+    box-sizing: border-box;  
+}  
 
-/* Flex body container */
-.flex-body {
-    display: flex;
-    width: 100%; 
-    /* background-color: #f8f9fa;  */
-    /* border-radius: 10px; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
-    /* margin: 20px auto; */
-    /* padding: 20px; */
+/* Cấu trúc chính */  
+.app-container {  
+    display: flex;  
+    height: 100vh; /* Chiều cao toàn màn hình */  
+}  
+
+/* Thanh điều hướng (sidebar) */  
+.sidebar {  
+    width: 250px; /* Chiều rộng thanh điều hướng */  
+    background-color: #f4f4f4; /* Màu nền thanh sidebar */  
+    
+}  
+
+ol, ul {
+    padding-left: 10px;
 }
 
-/* Sidebar styling */
-/* .flex-body Sidebar {
-    width: 25%; 
+/* Danh sách menu */  
+.sidebar-menu {  
+    list-style: none; /* Bỏ dấu chấm trước item */  
+}  
+
+.menu-item {  
+    padding : 10px;  
+    cursor: pointer;  
+    transition: background-color 0.3s;  
+}  
+
+.menu-item:hover {  
+    background-color: #e0e0e0; /* Màu nền khi hover */  
+}  
+
+/* Nội dung chính */  
+.content {  
+    flex-grow: 1; /* Chiếm diện tích còn lại */  
+    /* padding: 20px;   */
+    background-color: #ffffff; /* Màu nền của nội dung */  
+}  
+
+/* Thanh điều hướng và tìm kiếm nằm trong cùng một phần */  
+.breadcrumb-search {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 10px;  
+    background-color: #0037ff; /* Màu nền cho thanh điều hướng */  
+}  
+
+/* Breadcrumb (đường dẫn) */  
+.breadcrumb {  
+    font-size: 14px;  
+    color: #ffffff; /* Màu chữ */  
+}  
+
+/* Ô tìm kiếm */  
+.search-bar {  
+    display: flex;  
+}  
+
+.search-bar input {  
+    padding: 8px;  
+    border: 1px solid #ccc; /* Đường viền ô tìm kiếm */  
+    border-radius: 4px; /* Bo tròn góc */  
+    margin-right: 5px;  
+    width: 200px; /* Chiều rộng ô tìm kiếm */  
+}  
+
+.search-bar button {  
+    padding: 8px 12px;  
+    border: none; /* Bỏ đường viền */  
+    border-radius: 4px; /* Bo tròn góc */  
+    background-color: #007bff; /* Màu nền cho nút */  
+    color: white; /* Màu chữ nút */  
+    cursor: pointer;  
+}  
+
+.search-bar button:hover {  
+    background-color: #0056b3; /* Màu nền khi hover nút */  
+}  
+
+/* Tiêu đề chính */  
+h1 {  
+    margin-top: 20px;  
+    font-size: 24px;  
+    color: #333; /* Màu chữ tiêu đề */  
+}  
+
+/* Đoạn mô tả */  
+p {  
+    font-size: 16px;  
+    color: #666; /* Màu chữ mô tả */  
+    margin-top: 10px; /* Khoảng cách phía trên */  
+}
+
+.content-body{
     padding: 15px;
-    background-color: #333; 
-    color: white;
-    border-radius: 10px 0 0 10px;
-} */
-
-/* Content area styling */
-/* .flex-body ContentArea {
-    width: 75%; 
-    padding: 20px;
-    background-color: #fff; 
-    border-radius: 0 10px 10px 0;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); 
-} */
-/* Sidebar CSS */
-.sidebar {
-    width: 300px;
-    background-color: #bdbdbd; /* Màu nền nhạt cho sidebar */
-    /* padding: 10px; */
-    /* position: fixed;  */
-    top: 0;
-    bottom: 0;
-    left: 0;
-    /* overflow-y: auto;  */
-}
-
-.sidebar h6 {
-    width: 300px;
-    background-color: #fffdfd;
-    font-weight: bold;
-    margin-top: -10px;
-    padding: 10px; 
-    border-bottom: 1px solid #171515;
-    border-top: 1px solid #171515;
-}
-  
-/* Submenu CSS */
-.submenu {
-    background-color: #e0f0ff; /* Màu nền cho submenu */
-    padding: 20px;
-    display: flex;
-    gap: 20px;
-    border-bottom: 1px solid #ccc; /* Viền dưới phân cách submenu */
-}
-  
-.submenu-item {
-    font-size: 14px;
-    color: #007bff;
-    cursor: pointer;
-}
-  
-.submenu-item:hover {
-    color: #0056b3; /* Màu khi hover */
-}
-  
-/* Nội dung chính */
-.content-area {
-    width: 100%;
-    background-color: #fffdfd;
-    padding: 20px;
-}
-  
-.content-area h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-  
-.content-area h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-  
-.content-area p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-}
-
-li {
-   font-weight: bold; 
-}
-
-.no-bullets {
-    list-style-type: none; /* Removes bullet points */
-    padding-left: 0; /* Removes default padding */
-}
-
-.no-bullets li {
-    margin-left: 20px; /* Adjusts any extra indentation */
-}
-
-.content-area .breadcrum {
-    font-size: 14px;
-    background-color: rgb(84, 84, 253);
-    padding: 10px; 
 }

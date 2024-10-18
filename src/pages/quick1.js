@@ -1,82 +1,65 @@
-import React from 'react';
-import Sidebar from './sidebar';
-import domainPricingImage from '../assets/download.png'; // Hình ảnh thứ nhất
-import secondImage from '../assets/doawn.png'; // Hình ảnh thứ hai
+import React, { useEffect, useState } from 'react';
 
-const Quick2 = () => {
+const CategoryPosts = () => {
+  const [posts, setPosts] = useState([]); // Lưu trữ danh sách bài viết
+  const [loading, setLoading] = useState(true); // Quản lý trạng thái loading
+
+  // Fetch dữ liệu từ API
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/categories/71/posts')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Xem cấu trúc dữ liệu API trả về
+        setPosts(data.posts || []); // Thiết lập danh sách bài viết (giả sử API trả về {posts: [...]})
+        setLoading(false); // Tắt trạng thái loading sau khi dữ liệu được lấy
+      })
+      .catch((error) => {
+        console.error('Lỗi khi lấy dữ liệu:', error);
+        setLoading(false); // Tắt trạng thái loading khi có lỗi
+      });
+  }, []);
+
+  // Hiển thị loading trong khi dữ liệu đang được fetch
+  if (loading) {
+    return <div>Đang tải dữ liệu...</div>;
+  }
+
   return (
-    <div className="d-flex">
-      <Sidebar />
-      <div className="container-fluid">
-        <div className="col-md-9 p-4">
-          <h4><strong>Bảng giá tên miền và các loại phí</strong></h4>
-          <p>Để xem bảng giá tên miền, vui lòng truy cập vào <a href="https://inet.vn/domain/bang-gia-ten-mien">iNET</a>.</p>
-
-          <h5>1. Tên miền .VN</h5>
-          <p>Tên miền .VN theo quy định sẽ được áp dụng các phí bao gồm Lệ phí đăng ký, Phí duy trì và phần Dịch vụ tài khoản quản trị tên miền.</p>
-
-          <ul>
-            <li>Lệ phí đăng ký: 200.000đ</li>
-            <li>Phí duy trì: 350.000đ</li>
-            <li>Dịch vụ tài khoản quản trị tên miền: 200.000đ</li>
-          </ul>
-
-          <h5>2. Tên miền .VN tiếng Việt</h5>
-          <p>Tên miền .VN tiếng Việt miễn phí đăng ký.</p>
-
-          <h5>3. Tên miền quốc tế (TLD)</h5>
-          <p>Tên miền quốc tế chỉ có một phí duy trì hàng năm.</p>
-
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>Tên miền</th>
-                <th>Phí đăng ký</th>
-                <th>Phí duy trì năm 1</th>
-                <th>Tổng phí</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>.vn</td>
-                <td>200.000đ</td>
-                <td>350.000đ</td>
-                <td>770.000đ</td>
-              </tr>
-              <tr>
-                <td>.com</td>
-                <td>319.000đ</td>
-                <td>329.000đ</td>
-                <td>648.000đ</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p><strong>Lưu ý:</strong> Các tên miền quốc tế khi đăng ký cần tuân thủ chính sách đăng ký quốc tế.</p>
-
-          {/* Thêm hình ảnh thứ nhất */}
-          <div className="text-center my-4">
-            <img 
-              src={domainPricingImage} 
-              alt="Bảng giá tên miền" 
-              style={{ width: '550px', height: '250px' }} 
-              className="img-fluid" 
-            />
-          </div>
-
-          {/* Thêm hình ảnh thứ hai */}
-          <div className="text-center my-4">
-            <img 
-              src={secondImage} 
-              alt="Hình ảnh thứ hai" 
-              style={{ width: '550px', height: '250px' }} 
-              className="img-fluid" 
-            />
-          </div>
-        </div>
+    <div className="category-posts">
+      <h2>Danh sách bài viết</h2>
+      
+      {/* Hiển thị danh sách bài viết */}
+      <div className="posts">
+        {posts.length === 0 ? (
+          <p>Không có bài viết nào.</p>
+        ) : (
+          posts.map((post) => (
+            <div key={post.id} className="post-item">
+              <h3>{post.title}</h3>
+              <p>{post.content}</p>
+              <p>Ngày tạo: {new Date(post.created_at).toLocaleDateString()}</p>
+              
+              {/* Hiển thị tệp đính kèm */}
+              {post.file_path && post.file_path.length > 0 && (
+                <div>
+                  {post.file_path.map((file, index) => (
+                    <div key={index}>
+                      <p>File đính kèm: {post.file_name[file]}</p>
+                      <img 
+                        src={`http://127.0.0.1:8000/uploads/${file}`} 
+                        alt={post.file_name[file]} 
+                        style={{ maxWidth: '200px', marginTop: '10px' }} 
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
 };
 
-export default Quick2;
+export default CategoryPosts;
