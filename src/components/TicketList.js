@@ -12,7 +12,11 @@ const TicketList = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
+<<<<<<< HEAD
         const response = await fetch("http://127.0.0.1:8000/api/sp");
+=======
+        const response = await fetch("http://localhost:3000/tickets");
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

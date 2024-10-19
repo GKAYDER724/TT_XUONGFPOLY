@@ -3,10 +3,15 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import * as Yup from "yup";
 import axios from "axios";
+=======
+
+import * as Yup from "yup";
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
 
 const YourComponent = () => {
   const [showForm, setShowForm] = useState(false);
@@ -15,7 +20,11 @@ const YourComponent = () => {
   const initialValues = {
     name: "Nguyễn Văn A",
     gmail: "nguyenvana@gmail.com",
+<<<<<<< HEAD
     content:
+=======
+    wordContent:
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
       "Cho anh gặp lại em Trước khi mình cách xa Nửa quãng đời về sau Anh không phiền em nữa",
     images: [],
   };
@@ -29,15 +38,22 @@ const YourComponent = () => {
       .email("Email không hợp lệ")
       .required("Địa chỉ Email là bắt buộc"),
 
+<<<<<<< HEAD
     content: Yup.string()
+=======
+    wordContent: Yup.string()
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
       .required("Nội dung là bắt buộc")
       .min(10, "Nội dung phải có ít nhất 10 ký tự"),
 
     images: Yup.array()
       .of(Yup.mixed().required("Hình ảnh là bắt buộc"))
       .min(1, "Phải có ít nhất một hình ảnh"),
+<<<<<<< HEAD
 
     priority: Yup.string().required("Họ và tên là bắt buộc"),
+=======
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
   });
 
   const handleSubmit = (values) => {
@@ -192,9 +208,15 @@ const YourComponent = () => {
                       {/* Trường chọn mức độ ưu tiên */}
                       <tr>
                         <td colSpan="2">
+<<<<<<< HEAD
                           <label htmlFor="priority">Trạng thái ưu tiên</label>
                           <Field
                             as="select"
+=======
+                          <label htmlFor="wordContent">Nội dung</label>
+                          <Field
+                            as="textarea"
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
                             className="form-control"
                             id="priority"
                             name="priority"
@@ -252,7 +274,11 @@ const YourComponent = () => {
                             placeholder="Nhập nội dung..."
                           />
                           <ErrorMessage
+<<<<<<< HEAD
                             name="content"
+=======
+                            name="wordContent"
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
                             component="div"
                             className="text-danger"
                           />
@@ -316,7 +342,11 @@ const YourComponent = () => {
                             type="submit"
                             className="btn btn-primary"
                             disabled={isSubmitting}
+<<<<<<< HEAD
                             // onClick={() => navigate("/ticketlist")}
+=======
+                            onClick={() => navigate("/ticketlist")}
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
                           >
                             Gửi
                           </button>
@@ -336,7 +366,11 @@ const YourComponent = () => {
             </Formik>
           </div>
         ) : (
+<<<<<<< HEAD
           <div className="col-md-20" style={{ marginBottom: "50px" }}>
+=======
+          <div className="col-md-20">
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
             <div className="card card-body">
               <Formik
                 initialValues={initialValues}
@@ -421,7 +455,11 @@ const YourComponent = () => {
         )}
 
         <div className="col-md-20">
+<<<<<<< HEAD
           <div className="card card-body" style={{ marginBottom: "50px" }}>
+=======
+          <div className="card card-body">
+>>>>>>> 107b17e1d7e5efd2e60cbaa91660dc8d125dec9d
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
