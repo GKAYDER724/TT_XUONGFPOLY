@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-light py-1 mt-auto">
        <div className="footer-inner">
-            <div className="container">
+            <div className="container" style={{ marginTop: '50px'}}>
                 <div className="footer-sv-list">
                     <div className="grid-5 inet-grid">
                         <div className="item col-grid">
