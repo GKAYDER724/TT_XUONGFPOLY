@@ -25,7 +25,8 @@ use App\Filament\Resources\Panel\UserResource\Pages;
 use App\Filament\Resources\Panel\UserResource\RelationManagers;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
-
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Forms\Components\Toggle;
 
 
 class UserResource extends Resource
@@ -66,7 +67,21 @@ class UserResource extends Resource
 
                     TextInput::make('number')->label('Số điện thoại')
                         ->required(),
-
+                    Toggle::make('is_leader')
+                        ->label('Chức vụ')
+                        ->onIcon('heroicon-s-user')
+                        ->offIcon('heroicon-s-users')
+                        ->inline(false)
+                        ->onColor('success')
+                        ->offColor('danger')
+                        // ->labelPosition('after')
+                        ->afterStateHydrated(function (Toggle $component, $state) {
+                            $component->state($state);
+                        })
+                        ->reactive()
+                        ->afterStateUpdated(function ($state, callable $set) {
+                            $set('position', $state ? 'Trưởng phòng' : 'Nhân viên');
+                        }),
 
                     TextInput::make('email')
                         ->required(),
@@ -96,11 +111,11 @@ class UserResource extends Resource
                     // ->searchable(),
 
                     Select::make('roles')
-                    ->label('Vai trò')
-                    ->relationship('roles', 'name')  // Sử dụng relationship với roles
-                    // ->multiple()  // Cho phép chọn nhiều vai trò nếu cần
-                    ->preload()  // Load sẵn các lựa chọn
-                    ->searchable(),  // Cho phép tìm kiếm vai trò
+                        ->label('Vai trò')
+                        ->relationship('roles', 'name')  // Sử dụng relationship với roles
+                        // ->multiple()  // Cho phép chọn nhiều vai trò nếu cần
+                        ->preload()  // Load sẵn các lựa chọn
+                        ->searchable(),  // Cho phép tìm kiếm vai trò
 
                     Select::make('department_id')
                         ->label('Phòng Ban')
@@ -113,9 +128,9 @@ class UserResource extends Resource
                     FileUpload::make('file_path')
                         ->label('Tải Ảnh lên')
                         ->columns(1)
-                        ,
-                 
-                    ]),
+                    ,
+
+                ]),
             ]),
         ]);
     }
@@ -126,14 +141,32 @@ class UserResource extends Resource
             ->poll('60s')
             ->columns([
                 TextColumn::make('roles.name')
-                ->label('Vai trò'),
+                    ->label('Vai trò'),
+                BadgeColumn::make('is_leader')
+                    ->label('Chức vụ')
+                    ->formatStateUsing(function ($state) {
+                        return $state ? 'Trưởng phòng' : 'Nhân viên';
+                    })
+                    ->colors([
+                        'success' => fn($state) => $state === 1,
+                        'danger' => fn($state) => $state === 0,
+                    ]),
                 TextColumn::make('name')->label('Tên'),
                 TextColumn::make('number')->label('Số điện thoại'),
                 TextColumn::make('email')->label('Email'),
                 TextColumn::make('department.name')->label('Phòng Ban'),
                 ImageColumn::make('file_path')->label('Ảnh'),
+
+
             ])
-            ->filters([])
+            ->filters([
+                Tables\Filters\SelectFilter::make('is_leader')
+                    ->options([
+                        1 => 'Trưởng phòng',
+                        0 => 'Nhân viên',
+                    ])
+                    ->label('Chức vụ')
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
@@ -202,35 +235,35 @@ class UserResource extends Resource
     }
 
 
-   // Tạo mới user
-public static function beforeCreate($data)
-{
-    $user = User::create($data);
-    
-    // Gán vai trò nếu có trong dữ liệu
-    if (isset($data['roles'])) {
-        $user->syncRoles($data['roles']); // Đồng bộ vai trò
-    }
-    
-    return $user;
-}
+    // Tạo mới user
+    public static function beforeCreate($data)
+    {
+        $user = User::create($data);
 
-// Cập nhật user
-public static function beforeSave($data, $record)
-{
-    // Cập nhật thông tin người dùng
-    $record->update($data);
+        // Gán vai trò nếu có trong dữ liệu
+        if (isset($data['roles'])) {
+            $user->syncRoles($data['roles']); // Đồng bộ vai trò
+        }
 
-    // Đồng bộ vai trò nếu có trong dữ liệu
-    if (isset($data['roles'])) {
-        $record->syncRoles($data['roles']);
+        return $user;
     }
 
-    return $record;
-}
+    // Cập nhật user
+    public static function beforeSave($data, $record)
+    {
+        // Cập nhật thông tin người dùng
+        $record->update($data);
 
-    
-    
+        // Đồng bộ vai trò nếu có trong dữ liệu
+        if (isset($data['roles'])) {
+            $record->syncRoles($data['roles']);
+        }
+
+        return $record;
+    }
+
+
+
 
     public static function getRelations(): array
     {

@@ -22,6 +22,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
  
+ 
 protected $casts = [
     'file_path'=>'array',
     'file_name'=>'array'

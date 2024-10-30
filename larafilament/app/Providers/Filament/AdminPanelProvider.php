@@ -17,7 +17,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-
+use Filament\Facades\Filament;
+use Illuminate\Support\ServiceProvider;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -56,6 +57,15 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
-            ]);
+            ])
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('1s');
+            
     }
+    // public function boot()
+    // {
+    //     Filament::serving(function () {
+    //         Filament::registerNotifications();
+    //     });
+    // }
 }

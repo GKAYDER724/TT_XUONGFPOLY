@@ -112,7 +112,13 @@ class CategoryResource extends Resource
     {
         return [];
     }
-
+    public static function getNotifications(): array
+    {
+        return [
+            'databaseNotifications' => true,
+            'databaseNotificationsPolling' => '1s',
+        ];
+    }
     public static function getPages(): array
     {
         return [
@@ -121,4 +127,5 @@ class CategoryResource extends Resource
             
         ];
     }
+    
 }

@@ -36,4 +36,8 @@ class Category extends Model
 
         return $categoryList;
     }
+    public function childrenRecursive()
+    {
+        return $this->children()->with('childrenRecursive');
+    }
 }

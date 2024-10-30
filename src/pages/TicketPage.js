@@ -1,11 +1,13 @@
 import React from 'react';
-import TicketForm from '../components/TicketForm';
+import Ticket from '../components/Ticket';
 
 const TicketPage = () => {
   return (
+    <>
     <div className="container mt-5">
-      <TicketForm />
+      <Ticket />
     </div>
+    </>
   );
 };
 

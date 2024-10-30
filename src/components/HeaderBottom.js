@@ -1,27 +1,21 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import { FaSearch } from "react-icons/fa";
+import React from 'react';
+import { Button } from 'react-bootstrap';
+import { FaSearch } from 'react-icons/fa';
+import '../css/HeaderBottom.css'
 
-const Header = () => {
-  return (
-    <header>
-      <div className="header bg-light py-3">
-        <div className="container">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <input
-              type="text"
-              className="form-control me-2"
-              placeholder="Tìm kiếm..."
-              style={{ width: "200px" }}
-            />
-            <Button variant="primary">
-              <FaSearch /> Tìm kiếm
-            </Button>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+const Header = () => { 
+    return (
+        <header>
+            <div className="header">
+                <div className="h-container">
+                    <input type="text" placeholder="Nhập từ khóa tìm kiếm" className="search-input" />
+                    <Button variant="warning" size="lg">
+                        <FaSearch className="search-icon" />
+                    </Button>{' '}
+                </div>
+            </div>
+        </header> 
+    );
 };
 
 export default Header;

@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\CheckUserRegistration;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->append(CheckUserRegistration::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
@@ -21,4 +22,3 @@ return Application::configure(basePath: dirname(__DIR__))
     // $app->middleware([
     //     \Fruitcake\Cors\HandleCors::class,
     // ]);
-    

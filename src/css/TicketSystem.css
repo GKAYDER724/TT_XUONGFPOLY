@@ -1,0 +1,280 @@
+.ticket-system {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .ticket-info {
+    width: 30%;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+  }
+  
+  .ticket-header h3 {
+    margin-bottom: 10px;
+  }
+  
+  .ticket-details div {
+    margin-bottom: 10px;
+  }
+  
+  .owner-badge {
+    background-color: #5cb85c;
+    color: white;
+    padding: 2px 5px;
+    margin-left: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .status-closed {
+    color: #d9534f;
+    font-weight: bold;
+  }
+  
+  .priority-high {
+    color: #f0ad4e;
+    margin-left: 10px;
+  }
+  
+  .reply-button, .close-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .reply-button {
+    background-color: #0275d8;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .close-button {
+    background-color: #d9534f;
+    color: white;
+  }
+  
+  .cc-recipients {
+    margin-top: 20px;
+  }
+  
+  .cc-recipients input {
+    width: calc(100% - 60px);
+    margin-bottom: 10px;
+  }
+  
+  .support-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .support-links li {
+    margin-bottom: 5px;
+  }
+  
+  .reply-form {
+    width: 65%;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-actions button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-actions button[type="submit"] {
+    background-color: #0275d8;
+    color: white;
+  }
+  
+  .form-actions button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-group input[readonly] {
+    background-color: #eee;
+    cursor: not-allowed;
+  }
+  
+  .file-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .file-label {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .file-name {
+    color: #555;
+  }
+  
+  .add-button {
+    background-color: #f0f5ff;
+    border: 1px solid #dde5ff;
+    color: #3478f7;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    background-color: #e0eaff;
+  }
+  
+  .file-info {
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  .cc-recipients {  
+    max-width: 600px;  
+    margin: 0 auto;  
+    padding: 20px;  
+    border: 1px solid #ccc;  
+    border-radius: 8px;  
+    background-color: #f9f9f9;  
+  }  
+  
+  .input-title {  
+    width: 100%;  
+    padding: 10px;  
+    margin-bottom: 20px;  
+    border: 1px solid #ccc;  
+    border-radius: 4px;  
+  }  
+  
+  .editor-toolbar {  
+    margin-bottom: 10px;  
+  }  
+  
+  .editor-toolbar button {  
+    margin-right: 5px;  
+  }  
+  
+  .editor {  
+    width: 100%;  
+    height: 200px;  
+    padding: 10px;  
+    border: 1px solid #ccc;  
+    border-radius: 4px;  
+    resize: none;  
+  }  
+  
+  .status {  
+    margin-top: 10px;  
+    font-size: 14px;  
+    color: #555;  
+  } 
+  
+  .editor-toolbar {  
+    margin-bottom: 10px;  
+  }  
+  
+  .editor-toolbar button {  
+    margin-right: 5px;  
+    padding: 8px 12px;  
+    border: none;  
+    border-radius: 4px;  
+    background-color: #e0e0e0;  
+    cursor: pointer;  
+  }  
+  
+  .preview-button {  
+    background-color: #007bff;  
+    color: white;  
+  }  
+  
+  .editor {  
+    width: 100%;  
+    height: 200px;  
+    padding: 10px;  
+    border: 1px solid #ccc;  
+    border-radius: 4px;  
+    resize: none;  
+  }  
+  
+  .status {  
+    margin-top: 10px;  
+    font-size: 14px;  
+    color: #555;  
+  }  

@@ -5,10 +5,127 @@ namespace App\Http\Controllers;
 use App\Models\SupportTicket;
 use App\Models\SupportTicketFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
+use App\Models\User; // Import model User
+use App\Notifications\TicketProcessedNotification;
 class SupportTicketController extends Controller
 {
+    public function getReplies($ticket_id)
+    {
+        // Tìm phiếu cha dựa trên ticket_id
+        $ticket = SupportTicket::findOrFail($ticket_id);
+    
+        // Lấy danh sách các phiếu con (replies)
+        $replies = $ticket->replies()->with('files')->get();
+    
+        // Nếu không có replies
+        if ($replies->isEmpty()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Không có phiếu con nào cho phiếu cha này.'
+            ], 404);
+        }
+        
+        // Lấy files của ticket cha
+        $parentFiles = $ticket->files->map(function ($file) {
+            return [
+                'id' => $file->id,
+                'file_name' => $file->file_name,
+                'file_path' => $file->file_path,
+                'file_size' => $file->file_size,
+                'file_type' => $file->file_type,
+                'created_at' => $file->created_at,
+                'updated_at' => $file->updated_at,
+            ];
+        });
+
+        // Định dạng replies với files
+        $formattedReplies = $replies->map(function ($reply) {
+            return [
+                'id' => $reply->id,
+                'title' => $reply->title,
+                'content' => $reply->content,
+                'priority' => $reply->priority,
+                'status' => $reply->status,
+                'created_at' => $reply->created_at,
+                'updated_at' => $reply->updated_at,
+                'files' => $reply->files->map(function ($file) {
+                    return [
+                        'id' => $file->id,
+                        'file_name' => $file->file_name,
+                        'file_path' => $file->file_path,
+                        'file_size' => $file->file_size,
+                        'file_type' => $file->file_type,
+                        'created_at' => $file->created_at,
+                        'updated_at' => $file->updated_at,
+                    ];
+                })
+            ];
+        });
+    
+        // Trả về thông tin phiếu cha và danh sách replies
+        return response()->json([
+            'status' => true,
+            'message' => 'Lấy ticket thành công',
+            'Phiếu Hỏi' => [
+                'id' => $ticket->id,
+                'title' => $ticket->title,
+                'content' => $ticket->content,
+                'priority' => $ticket->priority,
+                'status' => $ticket->status,
+                'created_at' => $ticket->created_at,
+                'updated_at' => $ticket->updated_at,
+                'files' => $parentFiles
+            ],
+            'Phiếu trả lời' => $formattedReplies
+        ], 200);
+    }
+    
+    public function getTicketsByUser($user_id)
+    {
+        // Lấy tất cả các ticket của người dùng dựa vào user_id với eager loading files
+        $tickets = SupportTicket::where('user_id', $user_id)
+            ->whereNull('support_ticket_id')
+            ->with('files')
+            ->get();
+     
+        // Nếu không tìm thấy ticket nào
+        if ($tickets->isEmpty()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Không tìm thấy ticket nào cho người dùng này.'
+            ], 404);
+        }
+
+        // Định dạng tickets với files
+        $formattedTickets = $tickets->map(function ($ticket) {
+            return [
+                'id' => $ticket->id,
+                'title' => $ticket->title,
+                'content' => $ticket->content,
+                'priority' => $ticket->priority,
+                'status' => $ticket->status,
+                'created_at' => $ticket->created_at,
+                'updated_at' => $ticket->updated_at,
+                'files' => $ticket->files->map(function ($file) {
+                    return [
+                        'id' => $file->id,
+                        'file_name' => $file->file_name,
+                        'file_path' => $file->file_path,
+                        'file_size' => $file->file_size,
+                        'file_type' => $file->file_type,
+                        'created_at' => $file->created_at,
+                        'updated_at' => $file->updated_at,
+                    ];
+                })
+            ];
+        });
+ 
+        return response()->json([
+            'status' => true,
+            'message' => 'Lấy ticket thành công',
+            'tickets' => $formattedTickets
+        ]);
+    }
     // API tạo mới Support Ticket và upload nhiều file
     public function store(Request $request)
     {
@@ -46,7 +163,10 @@ class SupportTicketController extends Controller
                 ]);
             }
         }
+        $leaders = User::where('is_leader', 1)->get();
 
+        // Gửi thông báo cho trưởng phòng
+     
         // Lấy danh sách file liên kết với support ticket
         $files = $ticket->files->map(function ($file) {
             return [

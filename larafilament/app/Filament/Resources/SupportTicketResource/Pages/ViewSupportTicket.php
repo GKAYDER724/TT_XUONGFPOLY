@@ -13,4 +13,6 @@ class ViewSupportTicket extends ViewRecord
     {
         return [Actions\EditAction::make()];
     }
+    
 }
+

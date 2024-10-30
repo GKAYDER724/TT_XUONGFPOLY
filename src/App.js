@@ -6,9 +6,9 @@ import Tutorials from "./pages/Tutorials";
 import Blog from "./pages/Blog";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-// import Login from "./pages/login";
+
 import Login from "./components/Login/Login";
-// import Register from "./pages/register";
+
 import Register from "./components/Register/Register";
 import Hosting from "./pages/Hosting";
 import Domain from "./pages/domain";
@@ -24,6 +24,7 @@ import ServiceDetail from "./components/ServiceDetail";
 // import ChatBox from "./components/ChatBox";
 import "./assets/style.css";
 import TicketLists from "./pages/TicketLists";
+import TicketMess from "./components/TicketMess";
 import TicketList from './pages/TicketLists';
 import ContributorsPage from './pages/ContributorsPage';
 import ChatBox from './components/ChatBox';
@@ -34,63 +35,28 @@ import ChatBox from './components/ChatBox';
 function App() {
   return (
     <Router>
-
       <Header />
-
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/service/:category/:serviceName" element={<ServiceDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/domain" element={<Domain />} />
-            <Route path="/hosting" element={<Hosting />} />
-            <Route path="/quickguide" element={<Quickguide />} />
-            <Route path="/transfer" element={<Transfer />} />
-            <Route path="/quick1" element={<Quick1 />} />
-            <Route path="/quick2" element={<Quick2 />} />
-            <Route path="/quick3" element={<Quick3 />} />
-            <Route path="/transfer1" element={<Transfer1 />} />
-            <Route path="/transfer2" element={<Transfer2 />} />
-            <Route path="/tutorials" element={<Tutorials />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/ticket" element={<TicketPage />} />
-          </Routes>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/domain" element={<Domain />} />
-        <Route path="/hosting" element={<Hosting />} />
-        <Route path="/quickguide" element={<Quickguide />} />
-        <Route path="/transfer" element={<Transfer />} />
-        <Route path="/quick1" element={<Quick1 />} />
-        <Route path="/quick2" element={<Quick2 />} />
-        <Route path="/quick3" element={<Quick3 />} />
-        <Route path="/transfer1" element={<Transfer1 />} />
-        <Route path="/transfer2" element={<Transfer2 />} />
-        <Route path="/tutorials" element={<Tutorials />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/ticket" element={<TicketPage />} />
-        <Route path="/ticketlist" element={<TicketLists />} />
-      </Routes>
-      <Footer />
-
-    <div className="d-flex flex-column min-vh-100">
-      <Header />
-      <Routes>
-
+          <Route path="/" element={<Home />} />
+          <Route path="/service/:category/:serviceName" element={<ServiceDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/domain" element={<Domain />} />
+          <Route path="/hosting" element={<Hosting />} />
+          <Route path="/quickguide" element={<Quickguide />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/quick1" element={<Quick1 />} />
+          <Route path="/quick2" element={<Quick2 />} />
+          <Route path="/quick3" element={<Quick3 />} />
+          <Route path="/transfer1" element={<Transfer1 />} />
+          <Route path="/transfer2" element={<Transfer2 />} />
+          <Route path="/tutorials" element={<Tutorials />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/ticket" element={<TicketPage />} />
+          <Route path="/ticketmess" element={<TicketMess />} />
           <Route path="/ticketlist" element={<TicketLists />} />
-          <Route path="/contributors" element={<ContributorsPage />} />
         </Routes>
-  
-
-        <Footer />
-
-      <ChatBox />
-    </div>
-
+      <Footer />
     </Router>
   );
 }

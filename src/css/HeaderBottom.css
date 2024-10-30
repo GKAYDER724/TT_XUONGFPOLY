@@ -1,0 +1,45 @@
+.header {
+    background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/08/background-banner-dep-doc-dao.jpg');
+    padding: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .h-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 800px;
+    /* padding: 5px 15px; */
+  }
+  
+  .search-input {
+    border: none;
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 30px;
+    outline: none;
+  }
+  
+  .search-button {
+    background-color: #ffd700; /* Yellow background */
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .search-icon {
+    font-size: 20px;
+    color: #333;
+  }
+  

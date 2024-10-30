@@ -15,7 +15,6 @@ class SupportTicket extends Model
         'department_id',
         'user_id',
         'assigned_to',
-        'file_path',
         'support_ticket_id',
         'created_at',
         'updated_at',
@@ -35,4 +34,15 @@ class SupportTicket extends Model
     {
         return $this->hasMany(SupportTicketFile::class);
     }
+    public function assignedTo()
+{
+    return $this->belongsTo(User::class, 'assigned_to');
+}
+public function department() {
+    return $this->belongsTo(Department::class);
+}
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
 }

@@ -5,6 +5,7 @@ namespace App\Filament\Resources\SupportTicketResource\Pages;
 use App\Filament\Resources\SupportTicketResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListSupportTickets extends ListRecords
 {
@@ -17,7 +18,13 @@ class ListSupportTickets extends ListRecords
         ];
     }
 
-    protected function getTableQuery(): \Illuminate\Database\Eloquent\Builder|null{
+    protected function getTableQuery(): Builder|null{
         return parent::getTableQuery()->where('support_ticket_id', NULL);
     }
+//     public static function query(): Builder
+// {
+//     return parent::query()->orderBy('created_at', 'desc');
+// }
+
+
 }
