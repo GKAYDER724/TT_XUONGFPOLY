@@ -8,13 +8,9 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Hosting from './pages/Hosting';
 import Domain from './pages/domain';
-import Quickguide from './pages/quickguide';
-import Transfer from './pages/transfer';
-import Quick1 from './pages/baiviet/quick1';
-import Quick2 from './pages/baiviet/quick2';
-import Quick3 from './pages/baiviet/quick3';
-import Transfer1 from './pages/baiviet/transfer1';
-import Transfer2 from './pages/baiviet/transfer2';
+import Question from './pages/Question';
+import AnswerSheet from './pages/AnswerSheet';
+import Post from './pages/Post'
 import "./assets/style.css";
 
 function App() {
@@ -29,13 +25,9 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/domain" element={<Domain />} />
             <Route path="/hosting" element={<Hosting />} />
-            <Route path="/quickguide" element={<Quickguide />} />
-            <Route path="/transfer" element={<Transfer />} />
-            <Route path="/quick1" element={<Quick1 />} />
-            <Route path="/quick2" element={<Quick2 />} />
-            <Route path="/quick3" element={<Quick3 />} />
-            <Route path="/transfer1" element={<Transfer1 />} />
-            <Route path="/transfer2" element={<Transfer2 />} />
+            <Route path="/Question/:id" element={<Question />} /> {/* Thêm route cho chi tiết danh mục */}
+            <Route path="/AnswerSheet/:id" element={<AnswerSheet />} /> {/* Thêm route cho chi tiết danh mục */}
+            <Route path="/Post/:id" element={<Post />} /> {/* Thêm route cho chi tiết danh mục */}
           </Routes>
         </main>
         <Footer />
