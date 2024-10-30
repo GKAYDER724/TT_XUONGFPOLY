@@ -197,6 +197,7 @@
 }
 
 
+
 .banner {
   background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/08/background-banner-dep-doc-dao.jpg');
   background-size: cover;
@@ -222,3 +223,18 @@
   padding: 10px 20px;
 }
 
+
+.card {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555;
+}

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -6,9 +5,7 @@ import Tutorials from "./pages/Tutorials";
 import Blog from "./pages/Blog";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 import Login from "./components/Login/Login";
-
 import Register from "./components/Register/Register";
 import Hosting from "./pages/Hosting";
 import Domain from "./pages/domain";
@@ -22,15 +19,15 @@ import Transfer2 from "./pages/transfer2";
 import TicketPage from "./pages/TicketPage";
 import ServiceDetail from "./components/ServiceDetail";
 // import ChatBox from "./components/ChatBox";
+import ChatBox from './components/ChatBox';
+import Question from './pages/Question';
+import AnswerSheet from './pages/AnswerSheet';
+import Post from './pages/Post'
 import "./assets/style.css";
 import TicketLists from "./pages/TicketLists";
 import TicketMess from "./components/TicketMess";
 import TicketList from './pages/TicketLists';
 import ContributorsPage from './pages/ContributorsPage';
-import ChatBox from './components/ChatBox';
-
-
-
 
 function App() {
   return (
@@ -55,6 +52,14 @@ function App() {
           <Route path="/ticket" element={<TicketPage />} />
           <Route path="/ticketmess" element={<TicketMess />} />
           <Route path="/ticketlist" element={<TicketLists />} />
+          <Route path="/" element={<TicketPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/domain" element={<Domain />} />
+          <Route path="/hosting" element={<Hosting />} />
+          <Route path="/Question/:id" element={<Question />} /> {/* Thêm route cho chi tiết danh mục */}
+          <Route path="/AnswerSheet/:id" element={<AnswerSheet />} /> {/* Thêm route cho chi tiết danh mục */}
+          <Route path="/Post/:id" element={<Post />} /> {/* Thêm route cho chi tiết danh mục */}
         </Routes>
       <Footer />
     </Router>

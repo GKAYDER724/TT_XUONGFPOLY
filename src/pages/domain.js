@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFolder } from 'react-icons/fa'; // Import icon thư mục
@@ -5,6 +6,7 @@ import Sidebar from './sidebar';
 import axios from 'axios'; // Import axios để gọi API
 
 const Domain = () => {
+
     const [categories, setCategories] = useState([]);
     const [posts, setPosts] = useState([]); // Lưu trữ bài viết
     const [selectedCategory, setSelectedCategory] = useState(null); // Danh mục được chọn
@@ -68,7 +70,6 @@ const Domain = () => {
                                     {category.name}
                                 </Link>
                             </div>
-
                             {/* Nếu danh mục cha có danh mục con, hiển thị chúng */}
                             {category.children_recursive.length > 0 && renderChildren(category.children_recursive)}
                         </div>

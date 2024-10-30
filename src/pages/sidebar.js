@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse } from 'react-bootstrap';
 import { FaCaretDown } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 const Helpdesk = () => {
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
   const [open, setOpen] = useState({});
-  const [focusedItem, setFocusedItem] = useState('');
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/Category")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Log dữ liệu để kiểm tra cấu trúc
-        // Đảm bảo rằng categories được thiết lập với children_recursive là một mảng
-        setCategories(data.data.map(category => ({
-          ...category,
-          children_recursive: category.children_recursive || [] // Đảm bảo children_recursive luôn là một mảng
-        })) || []);
+        console.log(data);
+        setCategories(
+          data.data.map(category => ({
+            ...category,
+            children_recursive: category.children_recursive || [] 
+          })) || []
+        );
       })
       .catch((error) => console.error("Lỗi khi lấy dữ liệu categories:", error));
   }, []);
@@ -27,40 +27,50 @@ const Helpdesk = () => {
     setOpen((prevState) => ({ ...prevState, [id]: !prevState[id] }));
   };
 
-  const handleNavigation = (path) => {
-    setFocusedItem(path); // Update the focused item
-    navigate(path); // Navigate to the corresponding page
+  const handleCategoryClick = (category) => {
+    if (category.children_recursive.length === 0) {
+      navigate(`/Post/${category.id}`);
+    } else {
+      toggleOpen(category.id);
+    }
   };
 
-  // Hàm đệ quy để render danh mục cha và con
   const renderCategoryTree = (category, level = 0) => (
     <div key={category.id} className="mb-2" style={{ paddingLeft: `${level * 7}px` }}>
-      <p className={`toggle-section ${open[category.id] ? 'active' : ''}`}>
-        <span onClick={() => handleNavigation(`/category/${category.id}`)}>
-          {category.name}
-        </span>
-        {/* Kiểm tra xem children_recursive có phải là một mảng và có phần tử không */}
+      <p 
+        className={`toggle-section ${open[category.id] ? 'active' : ''}`} 
+        onClick={() => handleCategoryClick(category)}
+        style={{ cursor: 'pointer' }}
+      >
+        {/* Kiểm tra nếu có parent_id khác null */}
+        {category.parent_id !== null ? (
+          <Link to={`/AnswerSheet/${category.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            {category.name}
+          </Link>
+        ) : (
+          <Link to={`/Question/${category.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            {category.name}
+          </Link>
+        )}
+        {/* Hiển thị icon nếu có mục con */}
         {Array.isArray(category.children_recursive) && category.children_recursive.length > 0 && (
-          <FaCaretDown
-            className={`caret-icon ${open[category.id] ? 'open' : ''}`}
-            onClick={() => toggleOpen(category.id)}
-          />
+          <FaCaretDown className={`caret-icon ${open[category.id] ? 'open' : ''}`} />
         )}
       </p>
-      {/* Kiểm tra xem children_recursive có phải là một mảng và có phần tử không */}
+      {/* Kiểm tra nếu có children_recursive */}
       {Array.isArray(category.children_recursive) && category.children_recursive.length > 0 && (
         <Collapse in={open[category.id]}>
           <ul className="list-unstyled">
             {category.children_recursive.map((subCategory) => (
               <li key={subCategory.id}>
-                {renderCategoryTree(subCategory, level + 1)} {/* Đệ quy với level tăng dần */}
+                {renderCategoryTree(subCategory, level + 1)}
               </li>
             ))}
           </ul>
         </Collapse>
       )}
     </div>
-  );  
+  );
 
   return (
     <div className="sidebar">
