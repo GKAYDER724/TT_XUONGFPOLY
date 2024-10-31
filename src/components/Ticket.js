@@ -1,7 +1,60 @@
 import React, { useState } from 'react';
 import '../css/TicketSystem.css'; // Assume you have CSS file for styling
+import axios from 'axios';
 
 const TicketSystem = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [file, setFile] = useState(null); // Lưu file được chọn
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    // Kiểm tra dữ liệu không rỗng
+    if (!title.trim() || !content.trim()) {
+      setError("Tiêu đề và nội dung không được để trống.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // Sử dụng FormData để gửi dữ liệu
+      const formData = new FormData();
+      formData.append('title', title.trim());
+      formData.append('content', content.trim());
+      formData.append('priority', 'medium'); // Thêm trường nếu API yêu cầu
+      formData.append('status', 'open');     // Thêm trường nếu API yêu cầu
+
+      // Kiểm tra và thêm file vào formData
+      if (file) {
+        formData.append('files[]', file); // Giả sử API yêu cầu một mảng 'files'
+      }
+
+      const response = await axios.post('http://127.0.0.1:8000/api/sp', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      if (response.data.status) {
+        setSuccess(true);
+        setTitle('');
+        setContent('');
+        setFile(null); // Reset file sau khi gửi thành công
+      } else {
+        throw new Error(response.data.message || 'Không thể gửi ticket');
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+      console.error('Lỗi khi gửi ticket:', err.response?.data);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const [formData, setFormData] = useState({
       name: 'Kayer Tyk',
       email: 'gkaydertk@gmail.com',
@@ -13,16 +66,8 @@ const TicketSystem = () => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
   };
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (e) => {
-      setFile(e.target.files[0]);
-  };
-
-  const [title, setTitle] = useState('');  
   
-  const [content, setContent] = useState('');  
-
+  
   const handlePreview = () => {  
     alert('Preview: ' + content);  
   };  
@@ -99,7 +144,7 @@ const TicketSystem = () => {
         <div className="form-header">
           <h3>Trả lời</h3>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
         <div className="form-container">
             <div className="form-row">
             <div className="form-group">
@@ -152,14 +197,15 @@ const TicketSystem = () => {
         </div>
           <div className="form-group">
             <div className="c-container">  
-              <h4>Nội dung</h4>  
+              <h4>Nội dung</h4>
+              
               <div>  
-                <label>Tiêu đề</label>  
+                <label>Tiêu đề</label>    
                 <input  
-                  type="text"  
-                  value={title}  
-                  onChange={(e) => setTitle(e.target.value)}  
-                  className="input-title"  
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
                 />  
               </div>  
               <div>  
@@ -208,9 +254,9 @@ const TicketSystem = () => {
                   </svg>  
                 </div>  
                 <textarea  
-                  value={content}  
-                  onChange={(e) => setContent(e.target.value)}  
-                  className="editor"  
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  required  
                 />  
                 <div className="status">  
                   lines: {lines} words: {words} saved  
@@ -225,7 +271,7 @@ const TicketSystem = () => {
                 Chọn tập tin
                 <input
                     type="file"
-                    onChange={handleFileChange}
+                    onChange={(e) => setFile(e.target.files[0])}
                     style={{ display: 'none' }}
                 />
                 </label>
@@ -241,7 +287,9 @@ const TicketSystem = () => {
             </div>
           </div>
           <div className="form-actions">
-            <button type="submit">Gửi</button>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Đang gửi...' : 'Gửi Ticket'}
+          </button>
             <button type="button">Hủy bỏ</button>
           </div>
         </form>
