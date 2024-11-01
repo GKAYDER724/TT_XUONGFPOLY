@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/apiRequest";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import * as Yup from "yup";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState(null);
 
   // Xác thực form bằng Yup
   const validationSchema = Yup.object().shape({
@@ -19,12 +20,18 @@ const Login = () => {
       .required("Mật khẩu là bắt buộc"),
   });
 
-  const handleLogin = (values) => {
+  const handleLogin = async (values) => {
     const newUser = {
       email: values.email,
       password: values.password,
     };
-    loginUser(newUser, dispatch, navigate);
+
+    const errorResponse = await loginUser(newUser, dispatch, navigate);
+    if (errorResponse) {
+      setLoginError(errorResponse.message);
+    } else {
+      setLoginError(null);
+    }
   };
 
   return (
@@ -39,7 +46,8 @@ const Login = () => {
           <h5 className="card-title mb-4 text-center">
             Đăng nhập một tài khoản sử dụng cho tất cả các dịch vụ
           </h5>
-
+          {loginError && <div className="text-danger">{loginError}</div>}{" "}
+          {/* Display login error */}
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={validationSchema}
@@ -49,12 +57,12 @@ const Login = () => {
               <Form>
                 <div className="form-group text-left">
                   <label>Email đăng nhập</label>
-                  <Field
-                    type="email"
+                  <Field type="email" name="email" className="form-control" />
+                  <ErrorMessage
                     name="email"
-                    className="form-control"
+                    component="div"
+                    className="text-danger"
                   />
-                  <ErrorMessage name="email" component="div" className="text-danger" />
                 </div>
 
                 <div className="form-group text-left mt-3">
@@ -64,41 +72,48 @@ const Login = () => {
                     name="password"
                     className="form-control"
                   />
-                  <ErrorMessage name="password" component="div" className="text-danger" />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-danger"
+                  />
                 </div>
 
                 <div className="form-check mt-3 d-flex align-items-center">
                   <Field
                     type="checkbox"
                     className="form-check-input"
-                    id="rememberMe"
-                  />
-                  <label className="form-check-label mb-0" htmlFor="rememberMe">
-                    Duy trì đăng nhập
-                  </label>
-                </div>
-
-                <div className="d-flex justify-content-between mt-2">
-                  <button className="btn btn-link p-0">Quên mật khẩu?</button>
-                </div>
-
-                <button type="submit" className="btn btn-primary w-100 mt-3">
-                  Đăng nhập
-                </button>
-              </Form>
-            )}
-          </Formik>
-
-          <p className="text-center mt-4">
-            Bạn chưa có tài khoản?
-            <a className="btn-link link-signup" href="./register">
-              Đăng ký
-            </a>
-          </p>
+                    id="rememberMe"/>
+                    <label className="form-check-label mb-0" htmlFor="rememberMe">
+                      Duy trì đăng nhập
+                    </label>
+                  </div>
+  
+                  <div className="d-flex justify-content-between mt-2">
+                    <button
+                      className="btn btn-link p-0"
+                      onClick={() => navigate("/forgot-password")}
+                    >
+                      Quên mật khẩu?
+                    </button>
+                  </div>
+  
+                  <button type="submit" className="btn btn-primary w-100 mt-3">
+                    Đăng nhập
+                  </button>
+                </Form>
+              )}
+            </Formik>
+            <p className="text-center mt-4">
+              Bạn chưa có tài khoản?
+              <a className="btn-link link-signup" href="./register">
+                Đăng ký
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default Login;
+    );
+  };
+  
+  export default Login;

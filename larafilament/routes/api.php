@@ -19,7 +19,7 @@ Route::middleware([CheckUserRegistration::class])->group(function () {
     // Route::post('SupportTicket',[CategoriesConertroll::class, 'get']);
     Route::post('sp', [SupportTicketController::class, 'store']);
     // Route để gửi yêu cầu đặt lại mật khẩu
-    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
         ->name('password.email');
     // Route để reset password
     Route::post('reset-password', [ResetPasswordController::class, 'reset']);

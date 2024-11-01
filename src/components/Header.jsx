@@ -1,12 +1,32 @@
-import {useState} from "react";
+import React, { useEffect } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "../css/ServiceMenu.css";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../redux/apiRequest";
+import { loginSuccess} from "../redux/authSlide";
 
 const Header = () => {
   const user = useSelector((state) => state.auth.login.currentUser);
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedUser = JSON.parse(localStorage.getItem("authUser"));
+    const token = localStorage.getItem("authToken");
+    if (savedUser && token) {
+      dispatch(loginSuccess(savedUser)); 
+    }
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    logoutUser(dispatch, navigate); 
+  };
+  
 console.log(user);
+
+
 
   return (
     <header>
@@ -49,8 +69,7 @@ console.log(user);
               <Nav.Link as={Link} to="/domain" className="d-flex align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="16"height="16"
                   fill="currentColor"
                   className="bi bi-book-half"
                   viewBox="0 0 16 16"
@@ -98,8 +117,7 @@ console.log(user);
                   width="16"
                   height="16"
                   fill="currentColor"
-                  className="bi bi-tags-fill"
-                  viewBox="0 0 16 16"
+                  className="bi bi-tags-fill"viewBox="0 0 16 16"
                 >
                   <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
                   <path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043z" />
@@ -154,8 +172,7 @@ console.log(user);
                     </div>
                   </NavDropdown.Item>
 
-                  {/* SSL */}
-                  <NavDropdown.Item as={Link} to="/service/ssl">
+                  {/* SSL */}<NavDropdown.Item as={Link} to="/service/ssl">
                     <div className="service-item text-center">
                       <img
                         className="service-img mb-2"
@@ -209,20 +226,20 @@ console.log(user);
 
               {/* User Authentication Links */}
               {user ? (
-                <NavDropdown title={`Xin chào, ${user.name} || ${user.username}`} id="user-nav-dropdown">
+                <NavDropdown title={`Xin chào,${user.name}  `} id="user-nav-dropdown">
                   <NavDropdown.Item as={Link} to="/profile">Hồ sơ của tôi</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/settings">Cài đặt</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} to="/logout" onClick={() => {/* Dispatch logout action */}}>
+                  <NavDropdown.Item onClick={handleLogout}>
                     Đăng xuất
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <Nav.Link as={Link} to="/login">Đăng nhập</Nav.Link>
               )}
+              
             </Nav>
-          </Navbar.Collapse>
-        </Container>
+          </Navbar.Collapse></Container>
       </Navbar>
     </header>
   );

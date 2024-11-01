@@ -4,7 +4,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     login: {
-      currentUser: null,
+      currentUser: JSON.parse(localStorage.getItem("authUser")) || null,
       isFetching: false,
       error: false,
     },
@@ -24,6 +24,19 @@ const authSlice = createSlice({
       state.login.isFetching = false;
       state.login.currentUser = action.payload;
       state.login.error = false;
+
+
+
+
+
+      //  Lưu thông tin người dùng và token vào localStorage
+       localStorage.setItem('authToken', action.payload.token);
+       localStorage.setItem('authUser', JSON.stringify(action.payload));
+
+
+
+
+
     },
     loginFailed: (state) => {
       state.login.isFetching = false;
@@ -43,6 +56,24 @@ const authSlice = createSlice({
       state.register.error = true;
       state.register.success = false;
     },
+    logout: (state) => {
+      state.login.currentUser = null;
+      state.login.isFetching = false;
+      state.login.error = false;
+
+
+
+        // Xóa thông tin khỏi localStorage
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('authUser');
+
+
+
+
+    },
+    setCurrentUser: (state, action) => {
+      state.login.currentUser = action.payload;
+    },
   },
 });
 
@@ -54,6 +85,8 @@ export const {
   registerStart,
   registerFailed,
   registerSuccess,
+  logout,
+  setCurrentUser,
 } = authSlice.actions;
 
 

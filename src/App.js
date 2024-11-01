@@ -28,6 +28,9 @@ import TicketLists from "./pages/TicketLists";
 import TicketMess from "./components/TicketMess";
 import TicketList from './pages/TicketLists';
 import ContributorsPage from './pages/ContributorsPage';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import ResetPassword from "./components/ResetPassword/ResetPassword";
+
 
 function App() {
   return (
@@ -60,6 +63,8 @@ function App() {
           <Route path="/Question/:id" element={<Question />} /> {/* Thêm route cho chi tiết danh mục */}
           <Route path="/AnswerSheet/:id" element={<AnswerSheet />} /> {/* Thêm route cho chi tiết danh mục */}
           <Route path="/Post/:id" element={<Post />} /> {/* Thêm route cho chi tiết danh mục */}
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       <Footer />
     </Router>
