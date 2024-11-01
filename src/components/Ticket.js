@@ -5,17 +5,22 @@ import axios from 'axios';
 const TicketSystem = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [file, setFile] = useState(null); // Lưu file được chọn
+  const [fileInputs, setFileInputs] = useState([{ id: 0, file: null }]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    name: 'Kayer Tyk',
+    email: 'gkaydertk@gmail.com',
+    department: 'Phòng kỹ thuật',
+    priority: 'Bình thường',
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
-    // Kiểm tra dữ liệu không rỗng
     if (!title.trim() || !content.trim()) {
       setError("Tiêu đề và nội dung không được để trống.");
       setLoading(false);
@@ -23,19 +28,17 @@ const TicketSystem = () => {
     }
 
     try {
-      // Sử dụng FormData để gửi dữ liệu
-      const formData = new FormData();
-      formData.append('title', title.trim());
-      formData.append('content', content.trim());
-      formData.append('priority', 'medium'); // Thêm trường nếu API yêu cầu
-      formData.append('status', 'open');     // Thêm trường nếu API yêu cầu
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', title.trim());
+      formDataToSend.append('content', content.trim());
+      formDataToSend.append('priority', 'medium');
+      formDataToSend.append('status', 'open');
 
-      // Kiểm tra và thêm file vào formData
-      if (file) {
-        formData.append('files[]', file); // Giả sử API yêu cầu một mảng 'files'
-      }
+      fileInputs.forEach((input) => {
+        if (input.file) formDataToSend.append('files[]', input.file);
+      });
 
-      const response = await axios.post('http://127.0.0.1:8000/api/sp', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/api/sp', formDataToSend, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -43,7 +46,7 @@ const TicketSystem = () => {
         setSuccess(true);
         setTitle('');
         setContent('');
-        setFile(null); // Reset file sau khi gửi thành công
+        setFileInputs([{ id: 0, file: null }]);
       } else {
         throw new Error(response.data.message || 'Không thể gửi ticket');
       }
@@ -55,31 +58,38 @@ const TicketSystem = () => {
     }
   };
 
-  const [formData, setFormData] = useState({
-      name: 'Kayer Tyk',
-      email: 'gkaydertk@gmail.com',
-      department: 'Phòng kỹ thuật',
-      priority: 'Bình thường'
-  });
-  
-  const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({ ...formData, [name]: value });
+  const handleFileChange = (index, file) => {
+    const updatedInputs = fileInputs.map((input, i) =>
+      i === index ? { ...input, file } : input
+    );
+    setFileInputs(updatedInputs);
   };
-  
-  
-  const handlePreview = () => {  
-    alert('Preview: ' + content);  
-  };  
 
-  const countLinesAndWords = (text) => {  
-    const lines = text.split('\n').length;  
-    const words = text.split(/\s+/).filter(word => word.length > 0).length;  
-    return { lines, words };  
-  };  
+  const addFileInput = () => {
+    setFileInputs([...fileInputs, { id: fileInputs.length, file: null }]);
+  };
+
+  const removeFileInput = (index) => {
+    setFileInputs(fileInputs.filter((_, i) => i !== index));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const countLinesAndWords = (text) => {
+    const lines = text.split('\n').length;
+    const words = text.split(/\s+/).filter((word) => word.length > 0).length;
+    return { lines, words };
+  };
 
   const { lines, words } = countLinesAndWords(content);
 
+  const handlePreview = () => {
+    // Logic to display a preview of the submitted content
+    alert(`Title: ${title}\nContent: ${content}\nLines: ${lines}\nWords: ${words}`);
+  };
 
   return (
     <div className="ticket-system">
@@ -122,7 +132,7 @@ const TicketSystem = () => {
         <div className="cc-recipients">
           <label>CC Recipients</label>
           <input type="text" placeholder="Enter Email Address" />
-          <button>Add</button>
+          <button className='btn-mail'>Add</button>
         </div>
 
         {/* Support Links */}
@@ -266,25 +276,36 @@ const TicketSystem = () => {
           </div>
           <div className="form-group">
           <div className="file-input-container">
-            <div className="file-input-wrapper">
-                <label className="file-label">
-                Chọn tập tin
-                <input
-                    type="file"
-                    onChange={(e) => setFile(e.target.files[0])}
-                    style={{ display: 'none' }}
-                />
-                </label>
-                <span className="file-name">
-                {file ? file.name : 'No file selected'}
-                </span>
-            </div>
-            <button className="add-button">+ Thêm</button>
+            {fileInputs.map((input, index) => (
+                <div key={input.id} className="file-input-wrapper">
+                    <label className="file-label">
+                        Chọn tập tin
+                        <input
+                            type="file"
+                            onChange={(e) => handleFileChange(index, e.target.files[0])}
+                            style={{ display: 'none' }}
+                        />
+                    </label>
+                    <span className="file-name">
+                        {input.file ? input.file.name : 'No file selected'}
+                    </span>
+                    <button
+                        type="button"
+                        className="remove-button"
+                        onClick={() => removeFileInput(index)}
+                    >
+                        Xóa
+                    </button>
+                    
+                </div>
+            ))}
+            <button type="button" className="add-button" onClick={addFileInput}>
+              + Thêm
+            </button>
             <div className="file-info">
-                Hỗ trợ định dạng: .jpg, .gif, .jpeg, .png, .pdf, .zip, .doc (Max file
-                size: 1280MB)
+                Hỗ trợ định dạng: .jpg, .gif, .jpeg, .png, .pdf, .zip, .doc (Max file size: 1280MB)
             </div>
-            </div>
+        </div>
           </div>
           <div className="form-actions">
           <button type="submit" disabled={loading}>
