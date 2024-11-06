@@ -1,0 +1,23 @@
+.sidebar {
+    width: 250px; /* Đặt chiều rộng cho sidebar */
+    background-color: #f8f9fa; /* Màu nền cho sidebar */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển tiếp */
+  }
+  
+  .sidebar.closed {
+    width: 0; /* Ẩn sidebar */
+  }
+  
+  .sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Đảm bảo icon luôn hiển thị trên cùng */
+    cursor: pointer;
+  }
+  
+  .content {
+    transition: margin-left 0.3s ease; /* Hiệu ứng chuyển tiếp cho nội dung */
+    padding: 20px; /* Padding cho nội dung */
+  }
+  

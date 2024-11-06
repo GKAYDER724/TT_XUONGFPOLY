@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from './sidebar';
 import { useParams, Link } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
+import LoadingOverlay from './LoadingOverlay'; // Import LoadingOverlay
 
 const AnswerSheet = () => {
     const { id } = useParams();
@@ -25,19 +26,26 @@ const AnswerSheet = () => {
     };
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/Category/`)
-            .then((response) => response.json())
-            .then((data) => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/Category/`);
+                const data = await response.json();
                 if (Array.isArray(data.data)) {
                     const foundCategory = findCategoryById(data.data, Number(id));
                     setCategory(foundCategory);
                 }
-            })
-            .catch((error) => console.error("Lỗi khi lấy dữ liệu chi tiết danh mục:", error))
-            .finally(() => setLoading(false)); // Kết thúc tải, đặt loading là false
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu chi tiết danh mục:", error);
+            } finally {
+                setLoading(false); // Kết thúc tải, đặt loading là false
+            }
+        };
+
+        fetchCategories();
     }, [id]);
 
- 
+    if (loading) return <LoadingOverlay />; // Hiển thị lớp phủ khi đang tải
+
     if (!category) {
         return <div>Danh mục với ID {id} không tồn tại.</div>;
     }
