@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/apiRequest";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState(null);
+  const { login } = useContext(UserContext);
 
   // Xác thực form bằng Yup
   const validationSchema = Yup.object().shape({
@@ -31,6 +33,7 @@ const Login = () => {
       setLoginError(errorResponse.message);
     } else {
       setLoginError(null);
+      login(newUser); // Update user state in context
     }
   };
 

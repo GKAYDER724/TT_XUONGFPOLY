@@ -1,62 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/TicketSystem.css'; // Assume you have CSS file for styling
 import axios from 'axios';
+import { UserContext } from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 const TicketSystem = () => {
+  const user = useSelector((state) => state.auth.login.currentUser);
+  
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [fileInputs, setFileInputs] = useState([{ id: 0, file: null }]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const { isLoggedIn } = useContext(UserContext);
+  
   const [formData, setFormData] = useState({
-    name: 'Kayer Tyk',
-    email: 'gkaydertk@gmail.com',
     department: 'Phòng kỹ thuật',
     priority: 'Bình thường',
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
 
     if (!title.trim() || !content.trim()) {
-      setError("Tiêu đề và nội dung không được để trống.");
-      setLoading(false);
-      return;
+        setError("Tiêu đề và nội dung không được để trống.");
+        return;
+    }
+
+    setLoading(true);
+    setError(null);
+    setSuccess(false);
+
+    if (!user) {
+        alert("Vui lòng đăng nhập trước khi gửi phiếu.");
+        return;
     }
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('title', title.trim());
-      formDataToSend.append('content', content.trim());
-      formDataToSend.append('priority', 'medium');
-      formDataToSend.append('status', 'open');
+        const formData = new FormData();
+        formData.append('title', title.trim());
+        formData.append('content', content.trim());
+        formData.append('priority', 'medium');
+        formData.append('status', 'open');
+        formData.append('user_id', user.id); // Append user_id to the FormData
 
-      fileInputs.forEach((input) => {
-        if (input.file) formDataToSend.append('files[]', input.file);
-      });
+        console.log('Submitting ticket for user ID:', user.id);
+        
+        // Append files if any
+        fileInputs.forEach(input => {
+            if (input.file) {
+                formData.append('files[]', input.file);
+            }
+        });
 
-      const response = await axios.post('http://127.0.0.1:8000/api/sp', formDataToSend, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+        // Send the POST request
+        const response = await axios.post('http://127.0.0.1:8000/api/sp', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${user.token}`
+            },
+        });
 
-      if (response.data.status) {
-        setSuccess(true);
-        setTitle('');
-        setContent('');
-        setFileInputs([{ id: 0, file: null }]);
-      } else {
-        throw new Error(response.data.message || 'Không thể gửi ticket');
-      }
+        // Handle the response
+        if (response.data.status) {
+            setSuccess(true);
+            setTitle('');
+            setContent('');
+            setFileInputs([{ id: 0, file: null }]);
+        } else {
+            throw new Error(response.data.message || 'Không thể gửi ticket');
+        }
+
     } catch (err) {
-      setError(err.response?.data?.message || err.message);
-      console.error('Lỗi khi gửi ticket:', err.response?.data);
+        setError(err.response?.data?.message || err.message);
+        console.error('Lỗi khi gửi ticket:', err.response?.data);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
 
   const handleFileChange = (index, file) => {
     const updatedInputs = fileInputs.map((input, i) =>
@@ -90,8 +115,18 @@ const TicketSystem = () => {
     // Logic to display a preview of the submitted content
     alert(`Title: ${title}\nContent: ${content}\nLines: ${lines}\nWords: ${words}`);
   };
-
+  
   return (
+    <>
+    {!user ? (
+    <div style={{ color: 'red', marginBottom: '10px' }}>
+      Bạn cần đăng nhập để gửi ticket!
+    </div>
+  ) : (
+    <div style={{ color: 'green', marginBottom: '10px' }}>
+      Bạn đã có thể gửi ticket
+    </div>
+  )}
     <div className="ticket-system">
       {/* Ticket Information Section */}
       <div className="ticket-info">
@@ -101,7 +136,12 @@ const TicketSystem = () => {
         <div className="ticket-details">
           <div>
             <label>Requestor</label>
-            <div>KAYER TYK <span className="owner-badge">Owner</span></div>
+            {user?.name ? (
+              <div>
+                  {user.name}
+                  <span className="owner-badge">Owner</span>
+              </div>
+          ) : null}
           </div>
           <div>
             <label>Phòng ban</label>
@@ -125,7 +165,7 @@ const TicketSystem = () => {
         </div>
         <div className="ticket-actions">
           <button className="reply-button">Trả lời</button>
-          <button className="close-button">Đã đóng</button>
+          <button className="close-button" onClick={() => navigate("/ticketmess")}>Đã đóng</button>
         </div>
 
         {/* CC Recipients Section */}
@@ -139,7 +179,7 @@ const TicketSystem = () => {
         <div className="support-links">
           <h4>Hỗ trợ</h4>
           <ul>
-            <li><a href="#">Quản lý Ticket</a></li>
+            <li><a href="/ticketlist">Quản lý Ticket</a></li>
             <li><a href="#">Thông báo</a></li>
             <li><a href="#">Câu hỏi thường gặp</a></li>
             <li><a href="#">Tài nguyên</a></li>
@@ -149,7 +189,6 @@ const TicketSystem = () => {
         </div>
       </div>
 
-      {/* Reply Form Section */}
       <div className="reply-form">
         <div className="form-header">
           <h3>Trả lời</h3>
@@ -157,26 +196,31 @@ const TicketSystem = () => {
         <form onSubmit={handleSubmit}>
         <div className="form-container">
             <div className="form-row">
-            <div className="form-group">
-                <label>Họ & Tên</label>
-                <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                readOnly
-                />
-            </div>
-            <div className="form-group">
-                <label>Địa chỉ Email</label>
-                <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                readOnly
-                />
-            </div>
+            {user && (
+              <>
+                <div className="form-group">
+                  <label>Họ & Tên</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={user.name}  // Sử dụng {user.name} thay vì ${user.name}
+                    onChange={handleChange}
+                    readOnly
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Địa chỉ Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={user.email}  // Sử dụng {user.gmail} thay vì ${user.gmail}
+                    onChange={handleChange}
+                    readOnly
+                  />
+                </div>
+              </>
+            )}
+
             </div>
             <div className="form-row">
             <div className="form-group">
@@ -208,7 +252,7 @@ const TicketSystem = () => {
           <div className="form-group">
             <div className="c-container">  
               <h4>Nội dung</h4>
-              
+              <h6></h6>
               <div>  
                 <label>Tiêu đề</label>    
                 <input  
@@ -308,14 +352,17 @@ const TicketSystem = () => {
         </div>
           </div>
           <div className="form-actions">
+          {user && (
           <button type="submit" disabled={loading}>
             {loading ? 'Đang gửi...' : 'Gửi Ticket'}
           </button>
+          )}
             <button type="button">Hủy bỏ</button>
           </div>
         </form>
       </div>
     </div>
+    </>
   );
 };
 

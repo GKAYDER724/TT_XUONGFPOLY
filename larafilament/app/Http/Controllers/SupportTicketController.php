@@ -13,10 +13,10 @@ class SupportTicketController extends Controller
     {
         // Tìm phiếu cha dựa trên ticket_id
         $ticket = SupportTicket::findOrFail($ticket_id);
-    
+
         // Lấy danh sách các phiếu con (replies)
         $replies = $ticket->replies()->with('files')->get();
-    
+
         // Nếu không có replies
         if ($replies->isEmpty()) {
             return response()->json([
@@ -24,7 +24,7 @@ class SupportTicketController extends Controller
                 'message' => 'Không có phiếu con nào cho phiếu cha này.'
             ], 404);
         }
-        
+
         // Lấy files của ticket cha
         $parentFiles = $ticket->files->map(function ($file) {
             return [
@@ -46,6 +46,7 @@ class SupportTicketController extends Controller
                 'content' => $reply->content,
                 'priority' => $reply->priority,
                 'status' => $reply->status,
+                'assigned_to' => $reply->assignedTo ? $reply->assignedTo->name : null,
                 'created_at' => $reply->created_at,
                 'updated_at' => $reply->updated_at,
                 'files' => $reply->files->map(function ($file) {
@@ -61,7 +62,7 @@ class SupportTicketController extends Controller
                 })
             ];
         });
-    
+
         // Trả về thông tin phiếu cha và danh sách replies
         return response()->json([
             'status' => true,
@@ -72,6 +73,7 @@ class SupportTicketController extends Controller
                 'content' => $ticket->content,
                 'priority' => $ticket->priority,
                 'status' => $ticket->status,
+                'assigned_to' => $ticket->assignedTo ? $ticket->assignedTo->name : null,
                 'created_at' => $ticket->created_at,
                 'updated_at' => $ticket->updated_at,
                 'files' => $parentFiles
@@ -79,7 +81,6 @@ class SupportTicketController extends Controller
             'Phiếu trả lời' => $formattedReplies
         ], 200);
     }
-    
     public function getTicketsByUser($user_id)
     {
         // Lấy tất cả các ticket của người dùng dựa vào user_id với eager loading files
@@ -87,7 +88,7 @@ class SupportTicketController extends Controller
             ->whereNull('support_ticket_id')
             ->with('files')
             ->get();
-     
+
         // Nếu không tìm thấy ticket nào
         if ($tickets->isEmpty()) {
             return response()->json([
@@ -119,7 +120,7 @@ class SupportTicketController extends Controller
                 })
             ];
         });
- 
+
         return response()->json([
             'status' => true,
             'message' => 'Lấy ticket thành công',
@@ -134,6 +135,7 @@ class SupportTicketController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'priority' => 'required|string',
+            'user_id' => 'required|integer',
             'status' => 'required|string',
             'files' => 'required|array', // Đảm bảo 'files' là một mảng
             // 'files.*' => 'file|mimes:jpg,jpeg,png,pdf,docx|max:2048' // Quy định file được phép
@@ -145,6 +147,8 @@ class SupportTicketController extends Controller
             'content' => $validated['content'],
             'priority' => $validated['priority'],
             'status' => $validated['status'],
+            'user_id' => $validated['user_id'],
+            // 'department_id' => $validated['department_id'],
         ]);
 
         // Xử lý upload nhiều file
@@ -166,7 +170,7 @@ class SupportTicketController extends Controller
         $leaders = User::where('is_leader', 1)->get();
 
         // Gửi thông báo cho trưởng phòng
-     
+
         // Lấy danh sách file liên kết với support ticket
         $files = $ticket->files->map(function ($file) {
             return [
@@ -189,9 +193,11 @@ class SupportTicketController extends Controller
                 'content' => $ticket->content,
                 'priority' => $ticket->priority,
                 'status' => $ticket->status,
+                'user_id' => $ticket->user_id,
+                // 'department_id' => $ticket->department_id,
                 'created_at' => $ticket->created_at,
                 'updated_at' => $ticket->updated_at,
-                'files' => $files, 
+                'files' => $files,
             ]
         ], 201);
     }

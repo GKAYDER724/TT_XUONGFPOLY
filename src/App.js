@@ -30,11 +30,14 @@ import TicketList from './pages/TicketLists';
 import ContributorsPage from './pages/ContributorsPage';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import ResetPassword from "./components/ResetPassword/ResetPassword";
+import { UserProvider } from './context/UserContext';
+
 
 
 function App() {
   return (
-    <Router>
+    <UserProvider>
+      <Router>
       <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -68,6 +71,8 @@ function App() {
         </Routes>
       <Footer />
     </Router>
+    </UserProvider>
+    
   );
 }
 

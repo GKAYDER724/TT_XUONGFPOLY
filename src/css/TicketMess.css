@@ -1,0 +1,182 @@
+.tkm-ctn {  
+    max-width: 1000px;  
+    margin: 0 auto;  
+    /* padding: 20px;   */
+    font-family: Arial, sans-serif;  
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    
+}  
+
+.loading {  
+    text-align: center;  
+    font-size: 24px;  
+}  
+
+.error {  
+    color: red;  
+    text-align: center;  
+}  
+
+.no-data {  
+    text-align: center;  
+    font-size: 20px;  
+}  
+
+.message {  
+    font-size: 24px;  
+    margin-bottom: 20px;  
+}  
+
+.ticket {  
+    /* border-left: 4px solid #007bff;  */
+    border-radius: 8px; /* Bo góc */  
+    padding: 20px; /* Khoảng cách bên trong */  
+    background-color: #ffffff; /* Nền trắng */  
+    margin-bottom: 20px; /* Khoảng cách giữa các phiếu */  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */  
+}
+
+.ticket > div {  
+    font-weight: bold; /* Đậm cho ai đã gửi phiếu */  
+}  
+
+.ticket-itemm {  
+    font-size: 0.9em; /* Kích thước chữ cho ngày tạo */  
+    color: #888; /* Màu chữ cho ngày tạo */  
+    margin-top: 10px; /* Khoảng cách phía trên */  
+    text-align: right; /* Căn phải */  
+}  
+
+h2 {  
+    color: #333; /* Màu chữ cho tiêu đề */  
+    margin: 10px 0; 
+    font-size: 1.25em; /* Kích thước chữ cho tiêu đề */  
+}  
+
+p {  
+    color: #444; /* Màu chữ cho nội dung */  
+    line-height: 1.6; /* Khoảng cách giữa các dòng */  
+    margin: 10px 0; /* Khoảng cách trên và dưới cho đoạn văn */  
+}  
+
+.reply {  
+    border-left: 4px solid #007bff; /* Đường viền bên trái màu xanh */  
+    padding: 10px 16px; /* Khoảng cách bên trong */  
+    margin-bottom: 15px; /* Khoảng cách giữa các phản hồi */  
+    background-color: #ffffff; /* Nền trắng */  
+    border-radius: 5px; /* Bo góc */  
+}  
+
+.reply-header {  
+    display: flex;  
+    justify-content: space-between; /* Căn giữa */  
+    align-items: center; /* Căn giữa dọc */  
+    margin-bottom: 10px; /* Khoảng cách giữa header và nội dung */  
+}  
+
+.reply-author {  
+    font-weight: bold; /* Đậm cho tác giả phản hồi */  
+}  
+
+.reply-date {  
+    font-size: 0.85em; /* Kích thước chữ cho ngày */  
+    color: #888; /* Màu chữ cho ngày */  
+}  
+
+.reply h4 {  
+    margin: 5px 0; /* Khoảng cách giữa tiêu đề và nội dung */  
+    color: #007bff; /* Màu cho tiêu đề */  
+}  
+
+.reply p {  
+    color: #333; /* Màu chữ cho nội dung */  
+    line-height: 1.5; /* Khoảng cách giữa các dòng */  
+}  
+
+/* Các thành phần khác */  
+.owner-badge {  
+    background-color: #28a745; /* Nền cho badge Owner */  
+    color: white; /* Màu chữ cho badge Owner */  
+    border-radius: 4px;  
+    padding: 2px 6px;  
+    font-size: 0.85em;  
+    margin-left: 8px;  
+}  
+
+.operator-badge {  
+    background-color: #007bff; /* Nền cho badge Operator */  
+    color: white; /* Màu chữ cho badge Operator */  
+    border-radius: 4px;  
+    padding: 2px 6px;  
+    font-size: 0.85em;  
+    margin-left: 8px;  
+}
+.btn-view-tickets {  
+    background-color: #007bff;  
+    color: white;  
+    border: none;  
+    padding: 10px 15px;  
+    border-radius: 5px;  
+    cursor: pointer;  
+}  
+
+.btn-view-tickets:hover {  
+    background-color: #0056b3;  
+}   
+
+
+.ticket-itemm span {  
+    margin-left: 5px;
+    font-weight: 500; 
+}  
+
+.assigned-to {  
+    display: flex;  
+    flex-direction: column;  
+    margin-top: 8px;  
+}  
+  
+.assigned-to label {  
+    font-weight: bold;  
+    font-size: 1em; /* Kích thước chữ cho nhãn */  
+    margin-bottom: 4px; /* Khoảng cách bên dưới nhãn */  
+}  
+  
+.assigned-to div {  
+    display: flex;  
+    align-items: center;  
+}  
+
+.notification {  
+    background-color: #e7f3fe; /* Nền màu xanh nhạt */  
+    color: #31708f; /* Màu chữ */  
+    border: 1px solid #b3e0ff; /* Viền màu xanh nhạt */  
+    border-radius: 5px; /* Bo góc */  
+    padding: 15px; /* Khoảng cách bên trong */  
+    margin: 20px 0; /* Khoảng cách trên và dưới */  
+    font-size: 1em; /* Kích thước chữ */  
+}  
+
+@media (max-width: 768px) {  
+    .ticket-info {  
+        padding: 10px; /* Đảm bảo padding nhỏ hơn cho di động */  
+    }  
+    
+    .notification {  
+        font-size: 0.9em; /* Kích thước chữ nhỏ hơn cho thông báo */  
+        padding: 10px; /* Giảm độ dày padding */  
+    }  
+
+    .reply {  
+        margin-bottom: 15px; /* Đảm bảo không gian giữa các phản hồi */  
+    }  
+
+    .reply-date {  
+        font-size: 0.8em; /* Kích thước chữ nhỏ hơn cho ngày phản hồi */  
+    }  
+
+    h2, h3, h4 {  
+        font-size: 1.1em; /* Kích thước chữ nhỏ hơn cho tiêu đề */  
+    }  
+}  

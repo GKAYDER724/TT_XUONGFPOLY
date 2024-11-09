@@ -1,0 +1,33 @@
+/* styles.css */  
+table {  
+    width: 100%;  
+    border-collapse: collapse;  
+    margin: 20px 0;  
+    font-size: 16px;  
+    text-align: left;  
+}  
+
+th {  
+    background-color: #4CAF50; /* Màu nền cho tiêu đề bảng */  
+    color: white; /* Màu chữ tiêu đề bảng */  
+    padding: 12px;  
+}  
+
+td {  
+    border: 1px solid #ddd; /* Đường viền cho ô bảng */  
+    padding: 10px;  
+}  
+
+tr:nth-child(even) {  
+    background-color: #f2f2f2; /* Nền màu cho hàng chẵn */  
+}  
+
+tr:hover {  
+    background-color: #ddd; /* Nền màu khi hover */  
+}  
+
+ul {  
+    list-style-type: none; /* Bỏ đánh dấu của danh sách */  
+    padding: 0; /* Bỏ padding */  
+    margin: 0; /* Bỏ margin */  
+}

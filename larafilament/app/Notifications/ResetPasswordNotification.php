@@ -31,7 +31,7 @@ class ResetPasswordNotification extends BaseResetPassword
      */
     public function toMail($notifiable)
     {
-        $url = url('reset-password', $this->token) . '?email=' . $notifiable->getEmailForPasswordReset();
+        $url = 'http://localhost:3000/reset-password/' . $this->token . '?email=' . urlencode($notifiable->getEmailForPasswordReset());
 
         return (new MailMessage)
             ->subject('Reset Password Notification')

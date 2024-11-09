@@ -126,7 +126,7 @@ console.log(user);
               </Nav.Link>
 
               {/* Ticket */}
-              <Nav.Link as={Link} to="/ticket" className="d-flex align-items-center">
+              <Nav.Link as={Link} to="/ticketmess" className="d-flex align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
