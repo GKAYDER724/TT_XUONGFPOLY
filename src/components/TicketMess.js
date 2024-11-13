@@ -43,9 +43,9 @@ const TicketMess = () => {
   if (!ticketData) return <div className="no-data">Không có dữ liệu</div>;  
 
   return (  
-    <>  
+    <div>  
       <div className="ticket-system">  
-        <div className="ticket-info">  
+        <div className="ticket-info">
           <div className="ticket-header">  
             <h3>Thông tin Ticket</h3>  
           </div>  
@@ -80,12 +80,11 @@ const TicketMess = () => {
             </div>  
           </div>  
           <div className="ticket-actions">  
-            <button className="reply-button" onClick={() => navigate("/ticket")}>  
-              Trả lời  
-            </button>  
+            <button className="reply-button" onClick={() => navigate("/ticket")}>Trả lời</button>  
             <button className="close-button" >Đã đóng</button>
-            <button className="reply-button" onClick={() => navigate("/ticketlist")}>Xem danh sách Ticket đã gửi</button>  
-          </div>  
+            <button className="list-button" onClick={() => navigate("/ticketlist")}>Xem danh sách Ticket đã gửi</button>  
+          </div>
+
         </div>  
         <div className="tkm-ctn">
           <div className="notification">  
@@ -117,13 +116,12 @@ const TicketMess = () => {
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                      </svg>{user?.name ? (  
-                  <div>  
-                    {user.name}  
-                      
-                  </div>  
-                ) : null}   
-                    </div><span className="owner-badge">Owner</span>  
+                      </svg>
+                      {user?.name ? (  
+                      <div>{user.name}</div>  
+                      ) : null}   
+                    </div>
+                    <span className="owner-badge">Owner</span>  
                   </div>  
                   <span className="reply-date">{new Date(ticketData["Phiếu Hỏi"].created_at).toLocaleString()}</span>  
                 </div>
@@ -133,7 +131,7 @@ const TicketMess = () => {
           </div>     
         </div>  
       </div>  
-    </>  
+    </div>  
   );  
 };  
 

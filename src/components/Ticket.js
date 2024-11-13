@@ -119,14 +119,14 @@ const TicketSystem = () => {
   return (
     <>
     {!user ? (
-    <div style={{ color: 'red', marginBottom: '10px' }}>
-      Bạn cần đăng nhập để gửi ticket!
-    </div>
-  ) : (
-    <div style={{ color: 'green', marginBottom: '10px' }}>
-      Bạn đã có thể gửi ticket
-    </div>
-  )}
+      <div style={{ color: 'red', marginBottom: '10px' }}>
+        Bạn cần đăng nhập để gửi ticket!
+      </div>
+    ) : (
+      <div style={{ color: 'green', marginBottom: '10px' }}>
+        Bạn đã có thể gửi ticket
+      </div>
+    )}
     <div className="ticket-system">
       {/* Ticket Information Section */}
       <div className="ticket-info">
@@ -349,14 +349,14 @@ const TicketSystem = () => {
             <div className="file-info">
                 Hỗ trợ định dạng: .jpg, .gif, .jpeg, .png, .pdf, .zip, .doc (Max file size: 1280MB)
             </div>
-        </div>
+          </div>
           </div>
           <div className="form-actions">
-          {user && (
-          <button type="submit" disabled={loading}>
-            {loading ? 'Đang gửi...' : 'Gửi Ticket'}
-          </button>
-          )}
+            {user && (
+            <button type="submit" disabled={loading}>
+              {loading ? 'Đang gửi...' : 'Gửi Ticket'}
+            </button>
+            )}
             <button type="button">Hủy bỏ</button>
           </div>
         </form>

@@ -1,33 +1,100 @@
-/* styles.css */  
-table {  
-    width: 100%;  
-    border-collapse: collapse;  
-    margin: 20px 0;  
-    font-size: 16px;  
-    text-align: left;  
-}  
+/* body {  
+    font-family: Arial, sans-serif;  
+    background-color: #f5f5f5;  
+    margin: 0;  
 
-th {  
-    background-color: #4CAF50; /* Màu nền cho tiêu đề bảng */  
-    color: white; /* Màu chữ tiêu đề bảng */  
-    padding: 12px;  
-}  
-
-td {  
-    border: 1px solid #ddd; /* Đường viền cho ô bảng */  
-    padding: 10px;  
-}  
-
-tr:nth-child(even) {  
-    background-color: #f2f2f2; /* Nền màu cho hàng chẵn */  
-}  
-
-tr:hover {  
-    background-color: #ddd; /* Nền màu khi hover */  
-}  
-
-ul {  
-    list-style-type: none; /* Bỏ đánh dấu của danh sách */  
-    padding: 0; /* Bỏ padding */  
-    margin: 0; /* Bỏ margin */  
+}   */
+.ticket-all{
+    width: 100%;
 }
+
+.ticket {  
+    background: white;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;  
+    padding: 15px;  
+    margin-bottom: 15px;  
+}  
+
+.ticket-header {  
+    display: flex;  
+    justify-content: space-between;  
+    margin-bottom: 10px;  
+}  
+
+.name {  
+    font-weight: bold;  
+}  
+
+.role {  
+    color: #888;  
+}  
+
+.date {  
+    color: #aaa;  
+}  
+
+.message {  
+    margin: 10px 0;  
+}  
+
+.attachments span {  
+    font-weight: bold;  
+}  
+
+.attachments a {  
+    display: block;    
+    text-decoration: none;  
+}  
+
+.attachments a:hover {  
+    text-decoration: none;  
+}
+
+.attachments-list {  
+    list-style-type: none;  
+    padding: 0;  
+} 
+.attachment-item {  
+    margin: 5px 0;  
+}  
+
+.pagination {  
+    display: flex;  
+    justify-content: center;   
+    list-style-type: none;    
+}  
+
+.pagination li {  
+    margin: 0 5px;           
+}  
+
+.pagination a, .pagination span {  
+    padding: 6px 12px;      
+    border: 1px solid #007bff;   
+    border-radius: 5px;      
+    color: #007bff;           
+    text-decoration: none;     
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */  
+}  
+
+.pagination a:hover {  
+    background-color: #007bff;   
+    /* color: white;                */
+}  
+
+.pagination .active {  
+    background-color: #007bff; /* Highlight active page */  
+    color: white;               /* White text for active page */  
+    border: 1px solid #0056b3;  /* Darker border for active page */  
+}  
+
+.break-me {  
+    padding: 8px 12px;         
+    color: #007bff;              
+    cursor: default;           /* Default cursor for non-clickable element */  
+}  
+
+.break-me:hover {  
+    background-color: transparent; /* No hover effect on break label */  
+}  
