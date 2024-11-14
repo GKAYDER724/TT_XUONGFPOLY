@@ -31,10 +31,10 @@
 .ticket {  
     /* border-left: 4px solid #007bff;  */
     border-radius: 8px; /* Bo góc */  
-    padding: 20px; /* Khoảng cách bên trong */  
+    padding: 20px;  
     background-color: #ffffff; /* Nền trắng */  
-    margin-bottom: 20px; /* Khoảng cách giữa các phiếu */  
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */  
+    margin-bottom: 20px;   
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);   
 }
 
 .ticket > div {  
@@ -58,7 +58,12 @@ p {
     color: #444; /* Màu chữ cho nội dung */  
     line-height: 1.6; /* Khoảng cách giữa các dòng */  
     margin: 10px 0; /* Khoảng cách trên và dưới cho đoạn văn */  
-}  
+} 
+
+.replies {  
+    list-style: none; /* Loại bỏ dấu đầu dòng */  
+    padding: 0; /* Bỏ padding cho list */  
+}
 
 .reply {  
     border-left: 4px solid #007bff; /* Đường viền bên trái màu xanh */  
@@ -156,27 +161,4 @@ p {
     padding: 15px; /* Khoảng cách bên trong */  
     margin: 20px 0; /* Khoảng cách trên và dưới */  
     font-size: 1em; /* Kích thước chữ */  
-}  
-
-@media (max-width: 768px) {  
-    .ticket-info {  
-        padding: 10px; /* Đảm bảo padding nhỏ hơn cho di động */  
-    }  
-    
-    .notification {  
-        font-size: 0.9em; /* Kích thước chữ nhỏ hơn cho thông báo */  
-        padding: 10px; /* Giảm độ dày padding */  
-    }  
-
-    .reply {  
-        margin-bottom: 15px; /* Đảm bảo không gian giữa các phản hồi */  
-    }  
-
-    .reply-date {  
-        font-size: 0.8em; /* Kích thước chữ nhỏ hơn cho ngày phản hồi */  
-    }  
-
-    h2, h3, h4 {  
-        font-size: 1.1em; /* Kích thước chữ nhỏ hơn cho tiêu đề */  
-    }  
 }  

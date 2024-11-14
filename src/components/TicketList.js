@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";  
-import { useNavigate } from "react-router-dom";  
+import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';   
 import { useSelector } from "react-redux";  
-import ReactPaginate from "react-paginate";  
-import { fetchTicketsByUser } from "../actions/ticketActions"; // Ensure this action is actually being used somewhere if needed.  
-import "../css/TicketList.css";  
+import ReactPaginate from "react-paginate";
+import { Link } from 'react-router-dom';  
+// import { fetchTicketsByUser } from "../actions/ticketActions"; // Ensure this action is actually being used somewhere if needed.  
+import "../css/TicketList.css";
 
 const TicketList = () => {  
-  const user = useSelector((state) => state.auth.login.currentUser);  
+  const user = useSelector((state) => state.auth.login.currentUser);
+  console.log(user);
   const [tickets, setTickets] = useState([]);  
   const [loading, setLoading] = useState(true);  
   const [error, setError] = useState(null);  
@@ -20,22 +23,28 @@ const TicketList = () => {
   const pageCount = Math.ceil(tickets.length / ticketsPerPage);  
 
   const handlePageClick = (data) => {  
-    setCurrentPage(data.selected);  
+    setCurrentPage(data.selected);
+    
   };  
 
-  useEffect(() => {  
+  useEffect(() => {
+
+    
     const fetchTickets = async () => {  
+      
       try {  
-        const response = await fetch("http://127.0.0.1:8000/api/users/13/support-tickets", {  
+        const response = await fetch(`http://127.0.0.1:8000/api/users/${user.id}/support-tickets`, {  
           method: "GET",  
           headers: {  
             "Content-Type": "application/json",  
           },  
         });  
-
-        if (!response.ok) {  
+        // console.log(response);
+        
+        if (!response) {  
           throw new Error("Mạng lỗi!");  
         }  
+        // console.log('userId:', user_id);  
 
         const data = await response.json();  
 
@@ -51,7 +60,8 @@ const TicketList = () => {
       }  
     };  
 
-    fetchTickets();  
+    fetchTickets();
+    
   }, []);  
 
   if (loading) {  
@@ -106,8 +116,27 @@ const TicketInfo = ({ user, navigate }) => (
     </div>  
     <div className="ticket-actions">  
       <button className="reply-button" onClick={() => navigate("/ticket")}>Trả lời</button>  
-      <button className="close-button" onClick={() => navigate("/ticketmess")}>Đã đóng</button>  
-    </div>  
+      <button className="close-button" onClick={() => navigate("/ticketmess")}>Đã đóng</button>
+      <button className="list-button" onClick={() => navigate("/ticketlist")}>Xem danh sách Ticket đã gửi</button>      
+    </div>
+    <div className="cc-recipients">
+          <label>CC Recipients</label>
+          <input type="text" placeholder="Enter Email Address" />
+          <button className='btn-mail'>Add</button>
+        </div>
+
+        {/* Support Links */}
+        <div className="support-links">
+          <h4>Hỗ trợ</h4>
+          <ul>
+            <li><a href="/ticketlist">Quản lý Ticket</a></li>
+            <li><a href="#">Thông báo</a></li>
+            <li><a href="#">Câu hỏi thường gặp</a></li>
+            <li><a href="#">Tài nguyên</a></li>
+            <li><a href="#">Tình trạng Server</a></li>
+            <li><a href="#">Mở Ticket</a></li>
+          </ul>
+        </div>  
   </div>  
 );  
 
@@ -152,26 +181,28 @@ const TicketListView = ({ tickets, user , pageCount, handlePageClick }) => (
 
 );  
 
-const Ticket = ({ ticket, user }) => (  
-  <div className="ticket">  
-    <div className="ticket-header">  
-      <div className="reply-author">  
-        <div style={{ display: 'flex', alignItems: 'center' }}>  
-          {/* User Icon */}  
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">  
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>  
-          </svg>  
-          {user?.name && <div>{user.name}</div>}  
+const Ticket = ({ ticket, user }) => (
+  <Link to={`/ticketdetail/${ticket.id}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
+    <div className="ticket"> 
+      <div className="ticket-header">  
+        <div className="reply-author">  
+          <div style={{ display: 'flex', alignItems: 'center' }}>  
+            {/* User Icon */}  
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">  
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>  
+            </svg>  
+            {user?.name && <div>{user.name}</div>}  
+          </div>  
+          <span className="owner-badge">Owner</span>  
         </div>  
-        <span className="owner-badge">Owner</span>  
+        <span className="reply-date">{new Date(ticket.created_at).toLocaleString()}</span>  
       </div>  
-      <span className="reply-date">{new Date(ticket.created_at).toLocaleString()}</span>  
-    </div>  
-    <hr />  
-    <div className="ticket-title">{ticket.title}</div>  
-    <hr />  
-    <AttachmentList files={ticket.files} />  
-  </div>  
+      <hr />  
+      <div className="ticket-title">{ticket.title}</div>  
+      <hr />  
+      <AttachmentList files={ticket.files} />  
+    </div>
+  </Link>  
 );  
 
 const AttachmentList = ({ files }) => (  

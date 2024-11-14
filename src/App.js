@@ -18,6 +18,7 @@ import Transfer1 from "./pages/transfer1";
 import Transfer2 from "./pages/transfer2";
 import TicketPage from "./pages/TicketPage";
 import ServiceDetail from "./components/ServiceDetail";
+import TicketDetail from "./components/Details";
 // import ChatBox from "./components/ChatBox";
 import ChatBox from './components/ChatBox';
 import Question from './pages/Question';
@@ -58,6 +59,7 @@ function App() {
           <Route path="/ticket" element={<TicketPage />} />
           <Route path="/ticketmess" element={<TicketMess />} />
           <Route path="/ticketlist" element={<TicketLists />} />
+          <Route path="/ticketdetail/:id" element={<TicketDetail />} />
           <Route path="/" element={<TicketPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

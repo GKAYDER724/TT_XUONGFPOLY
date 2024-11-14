@@ -166,6 +166,7 @@ const TicketSystem = () => {
         <div className="ticket-actions">
           <button className="reply-button">Trả lời</button>
           <button className="close-button" onClick={() => navigate("/ticketmess")}>Đã đóng</button>
+          <button className="list-button" onClick={() => navigate("/ticketlist")}>Xem danh sách Ticket đã gửi</button> 
         </div>
 
         {/* CC Recipients Section */}
