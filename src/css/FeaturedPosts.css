@@ -1,0 +1,9 @@
+.featured-posts {
+    margin-top: 20px;
+}
+  
+.view-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Adjust gap between grid items */
+}

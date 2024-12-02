@@ -1,20 +1,82 @@
-import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import TicketPage from './pages/TicketPage';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Tutorials from "./pages/Tutorials";
+import Blog from "./pages/Blog";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import Hosting from "./pages/Hosting";
+import Domain from "./pages/domain";
+import Quickguide from "./pages/quickguide";
+import Transfer from "./pages/transfer";
+import Quick1 from "./pages/quick1";
+import Quick2 from "./pages/quick2";
+import Quick3 from "./pages/quick3";
+import Transfer1 from "./pages/transfer1";
+import Transfer2 from "./pages/transfer2";
+import TicketPage from "./pages/TicketPage";
+import ServiceDetail from "./components/ServiceDetail";
+import TicketDetail from "./components/Details";
+// import ChatBox from "./components/ChatBox";
 import ChatBox from './components/ChatBox';
+import Question from './pages/Question';
+import AnswerSheet from './pages/AnswerSheet';
+import Post from './pages/Post'
+import "./assets/style.css";
+import TicketLists from "./pages/TicketLists";
+import TicketMess from "./components/TicketMess";
+import TicketList from './pages/TicketLists';
+import ContributorsPage from './pages/ContributorsPage';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import ResetPassword from "./components/ResetPassword/ResetPassword";
+import { UserProvider } from './context/UserContext';
+
+
 
 function App() {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <UserProvider>
+      <Router>
       <Header />
-      <main className="flex-grow-1">
-        <TicketPage />
-      </main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/service/:category/:serviceName" element={<ServiceDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/domain" element={<Domain />} />
+          <Route path="/hosting" element={<Hosting />} />
+          <Route path="/quickguide" element={<Quickguide />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/quick1" element={<Quick1 />} />
+          <Route path="/quick2" element={<Quick2 />} />
+          <Route path="/quick3" element={<Quick3 />} />
+          <Route path="/transfer1" element={<Transfer1 />} />
+          <Route path="/transfer2" element={<Transfer2 />} />
+          <Route path="/tutorials" element={<Tutorials />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/ticket" element={<TicketPage />} />
+          <Route path="/ticketmess" element={<TicketMess />} />
+          <Route path="/ticketlist" element={<TicketLists />} />
+          <Route path="/ticketdetail/:id" element={<TicketDetail />} />
+          <Route path="/" element={<TicketPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/domain" element={<Domain />} />
+          <Route path="/hosting" element={<Hosting />} />
+          <Route path="/Question/:id" element={<Question />} /> {/* Thêm route cho chi tiết danh mục */}
+          <Route path="/AnswerSheet/:id" element={<AnswerSheet />} /> {/* Thêm route cho chi tiết danh mục */}
+          <Route path="/Post/:id" element={<Post />} /> {/* Thêm route cho chi tiết danh mục */}
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+        </Routes>
       <Footer />
-      <ChatBox />
-    </div>
+    </Router>
+    </UserProvider>
+    
   );
 }
 
 export default App;
+

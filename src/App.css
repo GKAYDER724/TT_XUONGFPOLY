@@ -124,3 +124,117 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+
+.text-dark {
+  color: black;  /* Màu đen cho văn bản */
+  text-decoration: none;  /* Xóa gạch chân mặc định */
+}
+.banner {
+  background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/08/background-banner-dep-doc-dao.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 180px;
+  color: white;
+  border-radius: 10px;
+
+}
+
+.banner h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.banner button {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+
+
+.caret-icon.open {
+  transform: rotate(180deg);
+}
+
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.sub-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  background-color: #f1f3f5;
+  cursor: pointer;
+}
+
+.sub-toggle.active {
+  background-color: #dee2e6;
+}
+
+.sub-list {
+  padding-left: 30px;
+}
+
+.sub-list li {
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.focused {
+  background-color: #e9ecef;
+  font-weight: bold;
+
+}
+
+
+
+.banner {
+  background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/08/background-banner-dep-doc-dao.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 180px;
+  color: white;
+  border-radius: 10px;
+}
+
+.banner h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.banner button {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+
+.card {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>  
+<html lang="vi">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="style.css">  
+    <title>Responsive Mobile Menu</title>
+    <style>
+        body {  
+    font-family: Arial, sans-serif;  
+}  
+
+.nav-menu {  
+    list-style-type: none;  
+    margin: 0;  
+    padding: 0;  
+    display: none; /* Ẩn menu mặc định */  
+    flex-direction: row; /* Nằm ngang */  
+}  
+
+.nav-menu li {  
+    margin-right: 20px;  
+}  
+
+.nav-menu a {  
+    text-decoration: none;  
+    color: black;  
+}  
+
+.menu-toggle {  
+    font-size: 30px;  
+    cursor: pointer;  
+    margin: 10px;  
+}  
+
+/* Khi màn hình đủ rộng, hiển thị menu */  
+@media (min-width: 600px) {  
+    .nav-menu {  
+        display: flex; /* Hiển thị menu ở dạng nằm ngang */  
+    }  
+}
+    </style>  
+</head>  
+<body>  
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>  
+    <ul class="nav-menu">  
+        <li><a href="#home">Trang Chủ</a></li>  
+        <li><a href="#about">Giới Thiệu</a></li>  
+        <li><a href="#services">Dịch Vụ</a></li>  
+        <li><a href="#contact">Liên Hệ</a></li>
+        <li><a href="#home">Trang Chủ</a></li>  
+        <li><a href="#about">Giới Thiệu</a></li>  
+        <li><a href="#services">Dịch Vụ</a></li>  
+        <li><a href="#contact">Liên Hệ</a></li>  
+    </ul>  
+
+    <script>
+        function toggleMenu() {  
+    const menu = document.querySelector('.nav-menu');  
+    menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';  
+}
+    </script>  
+</body>  
+</html>

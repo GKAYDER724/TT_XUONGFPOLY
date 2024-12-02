@@ -1,0 +1,32 @@
+.category-tree {
+    font-family: Arial, sans-serif;
+  }
+  
+  .toggle-section {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .toggle-section.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .sub-list {
+    list-style-type: none;
+    padding-left: 15px;
+  }
+  
+  .caret-icon {
+    margin-left: 5px;
+  }
+  
+  .caret-icon.open {
+    transform: rotate(90deg);
+  }
+  
+  .focused {
+    background-color: #e0e0e0;
+  }
+  

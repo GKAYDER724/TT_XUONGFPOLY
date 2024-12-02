@@ -1,0 +1,102 @@
+/* Reset các kiểu mặc định của trình duyệt */  
+* {  
+    box-sizing: border-box;  
+}  
+
+/* Cấu trúc chính */  
+.app-container {  
+    display: flex;  
+    height: 100vh; /* Chiều cao toàn màn hình */  
+}  
+
+/* Thanh điều hướng (sidebar) */  
+.sidebar {  
+    width: 250px; /* Chiều rộng thanh điều hướng */  
+    background-color: #f4f4f4; /* Màu nền thanh sidebar */  
+    
+}  
+
+ol, ul {
+    padding-left: 10px;
+}
+
+/* Danh sách menu */  
+.sidebar-menu {  
+    list-style: none; /* Bỏ dấu chấm trước item */  
+}  
+
+.menu-item {  
+    padding : 10px;  
+    cursor: pointer;  
+    transition: background-color 0.3s;  
+}  
+
+.menu-item:hover {  
+    background-color: #e0e0e0; /* Màu nền khi hover */  
+}  
+
+/* Nội dung chính */  
+.content {  
+    flex-grow: 1; /* Chiếm diện tích còn lại */  
+    /* padding: 20px;   */
+    background-color: #ffffff; /* Màu nền của nội dung */  
+}  
+
+/* Thanh điều hướng và tìm kiếm nằm trong cùng một phần */  
+.breadcrumb-search {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 10px;  
+    background-color: #0037ff; /* Màu nền cho thanh điều hướng */  
+}  
+
+/* Breadcrumb (đường dẫn) */  
+.breadcrumb {  
+    font-size: 14px;  
+    color: #ffffff; /* Màu chữ */  
+}  
+
+/* Ô tìm kiếm */  
+.search-bar {  
+    display: flex;  
+}  
+
+.search-bar input {  
+    padding: 8px;  
+    border: 1px solid #ccc; /* Đường viền ô tìm kiếm */  
+    border-radius: 4px; /* Bo tròn góc */  
+    margin-right: 5px;  
+    width: 200px; /* Chiều rộng ô tìm kiếm */  
+}  
+
+.search-bar button {  
+    padding: 8px 12px;  
+    border: none; /* Bỏ đường viền */  
+    border-radius: 4px; /* Bo tròn góc */  
+    background-color: #007bff; /* Màu nền cho nút */  
+    color: white; /* Màu chữ nút */  
+    cursor: pointer;  
+}  
+
+.search-bar button:hover {  
+    background-color: #0056b3; /* Màu nền khi hover nút */  
+}  
+
+/* Tiêu đề chính */  
+h1 {  
+    margin-top: 20px;  
+    font-size: 24px;  
+    color: #333; /* Màu chữ tiêu đề */  
+}  
+
+/* Đoạn mô tả */  
+p {  
+    font-size: 16px;  
+    color: #666; /* Màu chữ mô tả */  
+    margin-top: 10px; /* Khoảng cách phía trên */  
+}
+
+.content-body{
+    padding: 15px;
+}
